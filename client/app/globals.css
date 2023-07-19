@@ -1,3 +1,4 @@
+
 .BackgroundImage {
   width: 100vw;
   height: 100vh;
@@ -12,5 +13,6 @@
   background: linear-gradient(0deg, rgba(204, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0.50) 100%);
   border-radius: 5px;
 }
+
 
 

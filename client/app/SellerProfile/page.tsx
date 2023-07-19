@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Index = () => {
@@ -10,3 +11,4 @@ const Index = () => {
 };
 
 export default Index;
+
