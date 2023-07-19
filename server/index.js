@@ -5,10 +5,13 @@ require('dotenv').config();
 const PORT = process.env.PORT||3000
 const cors = require("cors");
 
+//// MODELS /////
 const User = require('./model/user');
 const Product = require('./model/Product');
 const Order = require('./model/Order');
 const Review = require('./model/Review');
+
+//// ROUTERS ////
 const adminRouter = require ('./router/admin')
 const authRouter = require('./router/Auth');
 const clientRouter = require('./router/clients');
