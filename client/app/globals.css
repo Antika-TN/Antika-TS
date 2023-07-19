@@ -1,16 +1,94 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+
 .BackgroundImage {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed; /* Use "fixed" instead of "absolute" */
   top: 0;
   left: 0;
   background: linear-gradient(123deg, #984D38 0%, #181E41 63%);
+  z-index: -1; /* Use a negative z-index to place it behind other content */
 }
 .CoverImage {
   width: 1040px;
   height: 355px;
-  background: linear-gradient(0deg, rgba(204, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0.50) 100%);
+  margin-top: 116px;
+  margin-left : 260px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%);
   border-radius: 5px;
 }
+.photoContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-top: -61px;
+  margin-left : 729px;
+  
+}
 
+.addphoto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 31px;
+  height: 31px;
+  background: #6C5DD3;
+  border-radius: 9999px;
+  margin-top: 90px;
+  margin-left : 87px;
+}
 
+.profilepic {
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  border: 1.5px white solid;
+}
+
+.profilname{
+  color: white;
+  font-size: 28px;
+  font-family: 'SF Pro Display';
+  font-weight: 600;
+  word-wrap: break-word;
+  margin-top: 45px;
+  margin-left : 711px;
+}
+
+.subname{ 
+  color : rgba(255, 255, 255, 0.40);
+  font-size: 18px;
+  font-family: 'SF Pro Display';
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-top: 9px ;
+  margin-left : 757px ;
+}
+
+.bio {
+  width: 896px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 16px;
+  font-family: 'SF Pro Display';
+  font-weight: 400;
+  line-height: 25px;
+  word-wrap: break-word;
+  margin-top: 38px ;
+  margin-left : 351px ;
+   
+
+}
+
+.photoGa {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+
+}
