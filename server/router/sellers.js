@@ -6,7 +6,7 @@ function checkSellerRole(req, res, next) {
   if (req.user && req.user.role === 'Seller') {
     next();
   } else {
-    return res.status(403).json({ error: 'Unauthorized. Seller role required.' });
+    return res.status(400).json({ error: 'Seller role required' });
   }
 }
 

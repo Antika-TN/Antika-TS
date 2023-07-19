@@ -1,4 +1,18 @@
-body{
-  background: linear-gradient( 90deg, #984D38,#181E41 60%);
 
+.BackgroundImage {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(123deg, #984D38 0%, #181E41 63%);
 }
+.CoverImage {
+  width: 1040px;
+  height: 355px;
+  background: linear-gradient(0deg, rgba(204, 1, 1, 0.5) 0%, rgba(0, 0, 0, 0.50) 100%);
+  border-radius: 5px;
+}
+
+
+
