@@ -11,7 +11,7 @@ const AdminControler ={
                     role:"Seller"
                 }
             })
-            res.status(200).json({message:'sellers retrieved successfully', data:sellers})
+            res.status(200).json({message:'sellers retrieved successfully',sellers})
         } catch (error){
             console.log('error retrieving sellers:',error)
             res.status(500).json({error:'Internal server error'})
@@ -25,7 +25,7 @@ const AdminControler ={
                     role:"Client"
                 }
             })
-            res.status(200).json({message:'clients retrieved successfully', data:clients})
+            res.status(200).json({message:'clients retrieved successfully',clients})
         } catch (error){
             console.log('error retrieving clients:',error)
             res.status(500).json({error:'Internal server error'})
@@ -79,7 +79,7 @@ const AdminControler ={
               { model: user, attributes: ['firstName','lastName','image'], as: 'User' },
             ]
           });
-          res.status(200).json({ message: 'Products retrieved successfully', data: products });
+          res.status(200).json({ message: 'Products retrieved successfully',products });
         } catch (error) {
           console.error('Error retrieving products:', error);
           res.status(500).json({ error: 'Internal server error' });
@@ -109,7 +109,7 @@ const AdminControler ={
                     role:'Client'
                 }
             })
-            res.status(200).json({ message:'client count retrieved successfully',data:clientCount})
+            res.status(200).json({ message:'client count retrieved successfully',clientCount})
         } catch(error){
             console.log('error retrieving client count:',error)
             res.status(500).json({error:'internal server error'})
@@ -123,12 +123,45 @@ const AdminControler ={
                     role:'Seller'
                 }
             })
-            res.status(200).json({ message:'seller count retrieved successfully',data:sellerCount})
+            res.status(200).json({ message:'seller count retrieved successfully',sellerCount})
         } catch(error){
             console.log('error retrieving seller count:',error)
             res.status(500).json({error:'internal server error'})
         }
       },
+
+      async SelectproductCount (req,res){
+        try{
+            const productCount = await Products.count()
+            res.status(200).json({ message:'product count retrieved successfully',productCount})
+        } catch(error){
+            console.log('error retrieving product count:',error)
+            res.status(500).json({error:'internal server error'})
+        }
+      },
+
+      async updateProduct (req,res){
+        try{
+            await Products.update(
+                {
+                    name : req.body.name,
+                    image: req.body.image,
+                    description: req.body.description,
+                    price : req.body.price,
+                    stock: req.body.stock,
+                    Category : req.body.Category
+                },
+                {
+                    where:{
+                        id: req.params.id
+                    }
+                }
+            )
+        }catch(error){
+            console.log('error updating product:',error)
+            res.status(500).json({error:'internal server error'})
+        }
+      }
 
 }
 
