@@ -8,12 +8,17 @@ router.get("/getAllProduct",AdminControler.getAllProducts);
 router.get("/selectClientCount",AdminControler.SelectclientCount);
 router.get("/selectSellerCount",AdminControler.SelectsellerCount);
 router.get("/selectProductCount",AdminControler.SelectproductCount);
-
+router.get("/getFurnitureProduct",AdminControler.getFurnitureProduct);
+router.get("/getDecorProduct",AdminControler.getDecorProduct);
+router.get("/getAccessoriesProduct",AdminControler.getAccessoriesProduct);
+router.get("/getVintageProduct",AdminControler.getVintageProduct);
+router.get("/sellerOrders/:id",AdminControler.sellerOrders);
+// router.get("/productminPrice/:id",AdminControler.productminPrice);
 
 router.delete("/deleteSeller/:id",AdminControler.deleteSeller)
 router.delete("/deleteClient/:id",AdminControler.deleteClient)
 router.delete("/deleteProduct/:id",AdminControler.deleteProduct)
 
-router.put('/updateProduct/:id',AdminControler.updateProduct)
+router.put('/updateProductCategory/:id',AdminControler.updateProductCategory)
 
 module.exports = router;
