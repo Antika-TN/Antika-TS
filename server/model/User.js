@@ -19,7 +19,11 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  image:{
+  imageCover:{
+    type:DataTypes.STRING,
+    allowNull:true
+  },
+  imageProfile:{
     type:DataTypes.STRING,
     allowNull:true
   },
