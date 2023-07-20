@@ -1,7 +1,35 @@
+"use client"
 import React from 'react';
 import styles from './page.module.css';
-
+import type { MenuProps } from 'antd';
+import { Button, Dropdown, Space } from 'antd';
 const Index = () => {
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          add Product
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+          check your sells
+        </a>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+          notification
+        </a>
+      ),
+    },
+  ];
   return (
     <div className={styles.Container}>
       <div className={styles.BackgroundImage}>
@@ -10,12 +38,19 @@ const Index = () => {
           <div className={styles.addphoto}></div>
           <img className={styles.profilepic} src="https://via.placeholder.com/120x120" alt="Profile" />
         </div>
+        <Space direction="vertical" className={styles.setting}>
+         <Space wrap>
+             <Dropdown menu={{ items }} placement="bottom">
+                  <Button className={styles.setting}>Settings</Button>
+              </Dropdown>
+         </Space>
+           </Space>
         <div className={styles.profilname}>Farhan Khan</div>
         <div className={styles.subname}>@farhan</div>
         <div className={styles.bio}>lvinar nerrrrrrrrrrgunc adipiscing.</div>
         <div className={styles.photoGa}>
           <img className={styles.picprod} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod1}  src = "https://onlinepngtools.com/images/examples-onlinepngtools/400-by-400.png"alt="Product" /> 
+          <img className={styles.picprod1} src = "https://onlinepngtools.com/images/examples-onlinepngtools/400-by-400.png"alt="Product" /> 
           <img className={styles.picprod2} src="https://via.placeholder.com/95x91" alt="Product" />
           <img className={styles.picprod3} src="https://via.placeholder.com/95x91" alt="Product" />
           <img className={styles.picprod4} src="https://via.placeholder.com/95x91" alt="Product" />
