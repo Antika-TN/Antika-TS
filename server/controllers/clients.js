@@ -20,13 +20,14 @@ const getOne = function(req,res){
   });
 }
 
-const createClient = function(){
+const createClient = function(req,res){
     Client.create({ 
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         address:req.body.address,
         phoneNumber: req.body.phoneNumber,
-        image:req.body.image,
+        imageCover:req.body.image,
+        imageProfile:req.body.image,
         createdAt:req.body.createdAt,
         updatedAt:req.body.updatedAt
       })
@@ -44,7 +45,8 @@ const updateClient = function(req,res){
     lastName:req.body.lastName,
     address:req.body.address,
     phoneNumber: req.body.phoneNumber,
-    image:req.body.image,
+    imageCover:req.body.image,
+    imageProfile:req.body.image,
     createdAt:req.body.createdAt,
     updatedAt:req.body.updatedAt
   },

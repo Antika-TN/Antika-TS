@@ -11,7 +11,7 @@ const getAll = function(req,res){
 }
 
 const getOne = function(req,res){
-  Order.findOne({where: { id: req.params.id, UserId: req.params.UserId }})
+  Order.findOne({where: {  UserId: req.params.UserId,id: req.params.id }})
   .then((results) => {
     res.status(200).send(results); 
   })
@@ -20,16 +20,15 @@ const getOne = function(req,res){
   });
 }
 
-const createOrder = function(){
-    Client.create({ 
-        firstName:req.body.firstName,
-        lastName:req.body.lastName,
-        address:req.body.address,
-        phoneNumber: req.body.phoneNumber,
-        image:req.body.image,
+const createOrder = function(req,res){
+  Order.create({ 
+        orderDate:req.body.orderDate,
+        totalAmount:req.body.totalAmount,
+        quantity:req.body.quantity,
         createdAt:req.body.createdAt,
         updatedAt:req.body.updatedAt
-      })
+      },
+      {where: {  UserId: req.params.UserId }})
       .then((results) => {
         res.status(200).send(results); 
       })
@@ -42,11 +41,9 @@ const createOrder = function(){
 
 const updateOrder = function(req,res){
   Order.update(
-  {firstName:req.body.firstName,
-    lastName:req.body.lastName,
-    address:req.body.address,
-    phoneNumber: req.body.phoneNumber,
-    image:req.body.image,
+  {orderDate:req.body.firstName,
+    totalAmount:req.body.lastName,
+    quantity:req.body.address,
     createdAt:req.body.createdAt,
     updatedAt:req.body.updatedAt
   },
@@ -73,4 +70,4 @@ const deleteOrder = function(req,res){
   });
 }
 
-module.exports = {getAll,getOne,updateOrder,deleteOrder}
+module.exports = {getAll,getOne,updateOrder,deleteOrder,createOrder}
