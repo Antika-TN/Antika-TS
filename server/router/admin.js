@@ -7,10 +7,13 @@ router.get("/clients",AdminControler.getAllclient);
 router.get("/getAllProduct",AdminControler.getAllProducts);
 router.get("/selectClientCount",AdminControler.SelectclientCount);
 router.get("/selectSellerCount",AdminControler.SelectsellerCount);
+router.get("/selectProductCount",AdminControler.SelectproductCount);
 
 
 router.delete("/deleteSeller/:id",AdminControler.deleteSeller)
 router.delete("/deleteClient/:id",AdminControler.deleteClient)
 router.delete("/deleteProduct/:id",AdminControler.deleteProduct)
+
+router.put('/updateProduct/:id',AdminControler.updateProduct)
 
 module.exports = router;
