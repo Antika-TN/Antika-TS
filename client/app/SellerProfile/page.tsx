@@ -1,8 +1,8 @@
 import React from 'react';
-
+import styles from './page.module.css'
 const Index = () => {
   return (
-    <div className="Container">
+    <div className={styles.Container}>
       <div className="BackgroundImage">
         <div className="CoverImage"></div>
         <div className="photoContainer">
@@ -17,5 +17,4 @@ const Index = () => {
     </div>
   );
 };
-
 export default Index;
