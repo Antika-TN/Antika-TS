@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import {  IconButton } from '@mui/material';
+import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Link from 'next/link';
 import Button from '@mui/material/Button';
@@ -11,8 +11,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './style.css'
 
-
-interface furniture {
+interface decor {
     id: number
     name: string 
     description: string 
@@ -23,23 +22,23 @@ interface furniture {
     imageProfile:string
     firstName:string
     }
-    image:string
+    image: string
   }
 
-function Furniture() {
-    const [FurnitureProduct, setFurnitureProduct] = useState<furniture[]>([])
+function Decor() {
+    const [DecorProduct, setDecorProduct] = useState<decor[]>([])
 
     useEffect(() => {
-        fetchFurnitureProduct()
+        fetchDecorProduct()
     }, []);
   
-    async function fetchFurnitureProduct() {
+    async function fetchDecorProduct() {
       try {
   
-        const response = await fetch('http://localhost:3000/admin/getFurnitureProduct')
+        const response = await fetch('http://localhost:3000/admin/getDecorProduct')
         const data = await response.json()
 
-        setFurnitureProduct(data.Furniture)
+        setDecorProduct(data.Decor)
     
       } catch (error) {
         console.error('Error', error)
@@ -67,7 +66,7 @@ function Furniture() {
         const handleDelete = async (id:number) => {
           try{
             await deleteProduct(id)
-            fetchFurnitureProduct()
+            fetchDecorProduct()
           }catch(error){
     console.error('Error deleting product:',error)
           }
@@ -76,44 +75,46 @@ function Furniture() {
 
   return (
     <div>
-       <div>
+         <div>
     <Link href="/admin/adminAllProduct">
                <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
+
     <div id='wrapper'>
-      {FurnitureProduct.map((furniture) => (
-        <Card key={furniture.id} className='card'>
+      {DecorProduct.map((decor) => (
+        <Card key={decor.id} className='card'>
           <CardContent>
             <Typography variant="h5" component="div">
-              {`Product: ${furniture.name}`}
+              {`Product: ${decor.name}`}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
-              {`Category: ${furniture.Category}`}
+              {`Category: ${decor.Category}`}
             </Typography>
-            {furniture.image && (
-              <Image width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
+            {decor.image && (
+              <Image width="250" height="150" src={decor.image} alt={`Product Image - ${decor.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
-              {`Description: ${furniture.description}`}
+              {`Description: ${decor.description}`}
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
-              {`Price: ${furniture.price}`}
+              {`Price: ${decor.price}`}
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
-              {`Stock: ${furniture.stock}`}
+              {`Stock: ${decor.stock}`}
             </Typography>
           </CardContent>
           <CardActions>
-            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(furniture.id)}>
+            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(decor.id)}>
               <DeleteIcon className='deleteicon' />
             </IconButton>
           </CardActions>
         </Card>
       ))}
     </div>
-    </div>
+
+  </div>
   )
 }
 
-export default Furniture
+export default Decor
