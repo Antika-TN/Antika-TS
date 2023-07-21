@@ -13,8 +13,13 @@ export{
     DashboardTable,
     Cards,
     Client,
+<<<<<<< HEAD
     Seller,
     Product,
     Furniture
     ///////admin/////
+=======
+    Seller
+
+>>>>>>> 76e0da066fdf431220330b77f40b063fda5c5f44
 }
