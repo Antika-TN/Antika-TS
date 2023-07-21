@@ -8,9 +8,9 @@ import Chose from './chosse'
 import axios from 'axios'
 interface Product {
   productName: string;
-  description:string;
-  price:string;
-  stock:string;
+  Productdescription:string;
+  Productprice:string;
+  Productstock:string;
   Category:string;
   image : string | null ;
 }
@@ -56,17 +56,21 @@ const Index: React.FC = () => {
     console.log('Received values of form: ', values);
     console.log(values.Category)
     setIsModalVisible(false); 
-    const parsedPrice = parseFloat(values.price);
-    const parsedStock = parseInt(values.stock);
+    console.log('desc',values.Productdescription)
+    console.log('productName',values.productName)
+    console.log('price',values.Productprice)
+    console.log('stock',values.Productstock)
+    console.log('Category',values.Category)
+
     try {
       const response = await axios.post('http://localhost:3000/products/', {
-        name: values.productName,
-        description: values.description,
-        price: parsedPrice,
-        stock: parsedStock,
-        Category: values.Category,
-        image: values.image || null,
-      });
+        "name": values.productName,
+        "description": values.Productdescription,
+        "price": parseFloat(values.Productprice),
+        "stock": parseInt(values.Productstock),
+        "Category": values.Category,
+        "image": values.image
+});
       console.log('Server response:', response.data);
     } catch (error) {
       console.error('Error posting data:', error);
