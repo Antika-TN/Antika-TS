@@ -21,6 +21,8 @@ router.delete("/deleteSeller/:id",AdminControler.deleteSeller)
 router.delete("/deleteClient/:id",AdminControler.deleteClient)
 router.delete("/deleteProduct/:id",AdminControler.deleteProduct)
 
-router.put('/updateProductCategory/:id',AdminControler.updateProductCategory)
+// router.put('/updateProductCategory/:id',AdminControler.updateProductCategory)
+
+// router.post('/addCategory',AdminControler.addCategoryValue)
 
 module.exports = router;

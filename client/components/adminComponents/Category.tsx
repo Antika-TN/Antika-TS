@@ -90,7 +90,7 @@ function Category() {
       >
         {categories.map((option, index) => (
           <MenuItem
-            key={option}
+            key= {option}
             disabled={index === -1}
             selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}

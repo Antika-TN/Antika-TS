@@ -1,6 +1,7 @@
 const user = require ('../model/User.js')
 const Products= require('../model/Product.js')
 const order = require('../model/Order.js')
+const { Sequelize } = require('sequelize'); 
 
 const AdminControler ={
 
@@ -140,24 +141,37 @@ const AdminControler ={
         }
       },
 
-      async updateProductCategory (req,res){
-        try{
-            await Products.update(
-                {
-                    Category : req.body.Category
-                },
-                {
-                    where:{
-                        id: req.params.id
-                    }
-                }
-            )
-        }catch(error){
-            console.log('error updating productCategory:',error)
-            res.status(500).json({error:'internal server error'})
-        }
-      },
+    //   async updateProductCategory (req,res){
+    //     try{
+    //         await Products.update(
+    //             {
+    //                 Category : req.body.Category
+    //             },
+    //             {
+    //                 where:{
+    //                     id: req.params.id
+    //                 }
+    //             }
+    //         )
+    //     }catch(error){
+    //         console.log('error updating productCategory:',error)
+    //         res.status(500).json({error:'internal server error'})
+    //     }
+    //   },
 
+    //   async addCategoryValue(newValue)  {
+    //     try {
+           
+              
+    //           await Products.sequelize.query(
+    //             `ALTER TABLE products MODIFY COLUMN Category ENUM('${newValue}') `
+    //           );
+    //           console.log(`Added new value "${newValue}" to Category ENUM.`);
+    //       }catch(error){
+    //     console.error("error adding value:",error )
+    // }
+    //     },
+    
       async getCategoryProduct(req,res){
         try{
             const Category= await Products.getAttributes().Category

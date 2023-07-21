@@ -1,10 +1,15 @@
 'use client'
-import React from 'react'
-import { useState , useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Link  from 'next/link'
+import Link from 'next/link';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import './style.css'
 
 interface decor {
     id: number
@@ -15,7 +20,9 @@ interface decor {
     Category:string
     User:{
     imageProfile:string
+    firstName:string
     }
+    image: string
   }
 
 function Decor() {
@@ -69,24 +76,43 @@ function Decor() {
   return (
     <div>
          <div>
-    <Link href="/admin/adminDashbord">
-               <Button variant="contained" color="primary">go back to dashboard</Button>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
-    <div>
-    <List className='card'>
-    {DecorProduct.map((decor) => (
-      <ListItem key={decor.id}>
-        <ListItemText className='ctii' primary={decor.name} secondary={decor.price} />
-        <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(decor.id)}>
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    ))}
-  </List>
-  </div>
+
+    <div id='wrapper'>
+      {DecorProduct.map((decor) => (
+        <Card key={decor.id} className='card'>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {`Product: ${decor.name}`}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {`Category: ${decor.Category}`}
+            </Typography>
+            {decor.image && (
+              <Image width="250" height="150" src={decor.image} alt={`Product Image - ${decor.name}`} />
+            )}
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Description: ${decor.description}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Price: ${decor.price}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Stock: ${decor.stock}`}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(decor.id)}>
+              <DeleteIcon className='deleteicon' />
+            </IconButton>
+          </CardActions>
+        </Card>
+      ))}
+    </div>
+
   </div>
   )
 }
