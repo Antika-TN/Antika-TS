@@ -1,6 +1,7 @@
 const user = require ('../model/User.js')
 const Products= require('../model/Product.js')
-
+const order = require('../model/Order.js')
+const { Sequelize } = require('sequelize'); 
 
 const AdminControler ={
 
@@ -76,7 +77,7 @@ const AdminControler ={
         try {
           const products = await Products.findAll({
             include: [
-              { model: user, attributes: ['firstName','lastName','image'], as: 'User' },
+              { model: user, attributes: ['firstName','lastName','imageProfile'], as: 'User' },
             ]
           });
           res.status(200).json({ message: 'Products retrieved successfully',products });
@@ -140,28 +141,148 @@ const AdminControler ={
         }
       },
 
-      async updateProduct (req,res){
+    //   async updateProductCategory (req,res){
+    //     try{
+    //         await Products.update(
+    //             {
+    //                 Category : req.body.Category
+    //             },
+    //             {
+    //                 where:{
+    //                     id: req.params.id
+    //                 }
+    //             }
+    //         )
+    //     }catch(error){
+    //         console.log('error updating productCategory:',error)
+    //         res.status(500).json({error:'internal server error'})
+    //     }
+    //   },
+
+    //   async addCategoryValue(newValue)  {
+    //     try {
+           
+              
+    //           await Products.sequelize.query(
+    //             `ALTER TABLE products MODIFY COLUMN Category ENUM('${newValue}') `
+    //           );
+    //           console.log(`Added new value "${newValue}" to Category ENUM.`);
+    //       }catch(error){
+    //     console.error("error adding value:",error )
+    // }
+    //     },
+    
+      async getCategoryProduct(req,res){
         try{
-            await Products.update(
-                {
-                    name : req.body.name,
-                    image: req.body.image,
-                    description: req.body.description,
-                    price : req.body.price,
-                    stock: req.body.stock,
-                    Category : req.body.Category
-                },
-                {
-                    where:{
-                        id: req.params.id
-                    }
-                }
-            )
-        }catch(error){
-            console.log('error updating product:',error)
-            res.status(500).json({error:'internal server error'})
+            const Category= await Products.getAttributes().Category
+
+            res.status(200).json({message:'Category retrieved successfully',Category})
+        } catch (error){
+            console.log('error retrieving Category:',error)
+            res.status(500).json({error:'Internal server error'})
         }
-      }
+    },
+
+      async getFurnitureProduct(req,res){
+        try{
+            const Furniture= await Products.findAll({
+                where:{
+                    Category:"Furniture"
+                }
+            })
+            res.status(200).json({message:'Furniture retrieved successfully',Furniture})
+        } catch (error){
+            console.log('error retrieving Furniture:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    async getDecorProduct(req,res){
+        try{
+            const Decor= await Products.findAll({
+                where:{
+                    Category:"Decor"
+                }
+            })
+            res.status(200).json({message:'Decor retrieved successfully',Decor})
+        } catch (error){
+            console.log('error retrieving Decor:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    async getAccessoriesProduct(req,res){
+        try{
+            const Accessories= await Products.findAll({
+                where:{
+                    Category:"Accessories"
+                }
+            })
+            res.status(200).json({message:'Accessories retrieved successfully',Accessories})
+        } catch (error){
+            console.log('error retrieving Accessories:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    async getVintageProduct(req,res){
+        try{
+            const Vintage= await Products.findAll({
+                where:{
+                    Category:"Vintage"
+                }
+            })
+            res.status(200).json({message:'Vintage retrieved successfully',Vintage})
+        } catch (error){
+            console.log('error retrieving Vintage:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    async getToolsProduct(req,res){
+        try{
+            const Tools= await Products.findAll({
+                where:{
+                    Category:"Tools"
+                }
+            })
+            res.status(200).json({message:'Tools retrieved successfully',Tools})
+        } catch (error){
+            console.log('error retrieving Tools:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    async sellerOrders(req,res){
+        try{
+            const orders = await order.count({
+                where:{
+                    UserId:req.params.id
+                }
+            })
+            
+            res.status(200).json({message:'orders retrieved successfully',orders})
+        } catch (error){
+            console.log('error retrieving orders:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+
+    // async productminPrice(req,res){
+    //     try{
+    //         const minprice = await Products.findAll({
+    //             attributes: [[sequelize.fn('min', sequelize.col('price')), 'minPrice']],
+
+    //             where:{
+    //                 UserId:req.params.id
+    //             }
+    //         })
+    //         res.status(200).json({message:'minPrice retrieved successfully',minprice})
+    //     } catch (error){
+    //         console.log('error retrieving minPrice:',error)
+    //         res.status(500).json({error:'Internal server error'})
+    //     }
+    // },
 
 }
 

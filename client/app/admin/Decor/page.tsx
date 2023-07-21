@@ -1,10 +1,10 @@
-import { ProdactDetails } from '@/components'
 import React from 'react'
+import { Decor } from '@/components'
 
 function page() {
   return (
     <div>
-      <ProdactDetails/>
+      <Decor/>
     </div>
   )
 }
