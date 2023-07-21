@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import styles from './page.module.css';
-import { Button, Dropdown, Space, Modal, Form, Input, Select,Upload } from 'antd';
+import { Button, Dropdown, Space, Modal, Form, Input, Select,Upload,message } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import Chose from './chosse'
+
 import axios from 'axios'
 interface Product {
   productName: string;
@@ -16,7 +17,9 @@ interface Product {
 }
 
 const Index: React.FC = () => {
-
+  const success = () => {
+    message.success('Product added successfully!');
+  };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -162,7 +165,6 @@ const Index: React.FC = () => {
               <Select.Option value="Tools">Tools</Select.Option>
             </Select>
           </Form.Item>
-
           <Form.Item name="image" label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
           <Upload action="/upload.do" listType="picture-card">
             <div>
@@ -172,7 +174,7 @@ const Index: React.FC = () => {
           </Upload>
         </Form.Item>
           <Form.Item >
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={success}>
               Add to your profile
             </Button>
           </Form.Item>
