@@ -4,6 +4,7 @@ import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } fro
 import DeleteIcon from '@mui/icons-material/Delete';
 import  Link  from 'next/link';
 import Button from '@mui/material/Button';
+import Category from './Category';
 
 interface product {
     id: number
@@ -67,8 +68,9 @@ function Product() {
 
   return (
     <div>
+        <Category/>
     <div>
-    <Link href="/adminDashbord">
+    <Link href="/admin/adminDashbord">
                <Button variant="contained" color="primary">go back to dashboard</Button>
              </Link>
     </div>

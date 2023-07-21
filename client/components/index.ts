@@ -5,6 +5,7 @@ import Cards from "./adminComponents/cards"
 import Client from "./adminComponents/Client"
 import Seller from "./adminComponents/Seller"
 import Product from "./adminComponents/Product"
+import Furniture from "./adminComponents/Furniture"
 export{
     ProdactCard,
     AllProdacts,
@@ -13,6 +14,7 @@ export{
     Cards,
     Client,
     Seller,
-    Product
+    Product,
+    Furniture
     ///////admin/////
 }
