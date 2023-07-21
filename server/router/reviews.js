@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const {getAll}=require('../controllers/reviews')
 
 
-router.get('/',/*  middleware ,controller */);
+router.get('/:id',/*  middleware ,controller */getAll);
 
 
 

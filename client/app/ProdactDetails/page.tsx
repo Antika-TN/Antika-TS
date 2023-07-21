@@ -1,9 +1,10 @@
+import { ProdactDetails } from '@/components'
 import React from 'react'
 
 function page() {
   return (
     <div>
-      the prodact details 
+      <ProdactDetails/>
     </div>
   )
 }
