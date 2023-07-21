@@ -76,7 +76,7 @@ const AdminControler ={
         try {
           const products = await Products.findAll({
             include: [
-              { model: user, attributes: ['firstName','lastName','image'], as: 'User' },
+              { model: user, attributes: ['firstName','lastName','imageProfile'], as: 'User' },
             ]
           });
           res.status(200).json({ message: 'Products retrieved successfully',products });

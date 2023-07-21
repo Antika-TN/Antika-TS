@@ -123,7 +123,7 @@ function Cards() {
           </Typography>
         </CardContent>
         <CardActions>
-        <Link href="/products">
+        <Link href="/adminAllProduct">
               <Button>See All</Button>
             </Link>
         </CardActions>
