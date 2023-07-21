@@ -83,7 +83,7 @@ function Cards() {
           </Typography>
         </CardContent>
         <CardActions>
-        <Link href="/adminAllClient">
+        <Link href="/admin/adminAllClient">
               <Button>See All</Button>
             </Link>
         </CardActions>
@@ -103,7 +103,7 @@ function Cards() {
           </Typography>
         </CardContent>
         <CardActions>
-        <Link href="/adminAllSeller">
+        <Link href="/admin/adminAllSeller">
               <Button>See All</Button>
             </Link>
         </CardActions>
@@ -123,7 +123,7 @@ function Cards() {
           </Typography>
         </CardContent>
         <CardActions>
-        <Link href="/products">
+        <Link href="/admin/adminAllProduct">
               <Button>See All</Button>
             </Link>
         </CardActions>

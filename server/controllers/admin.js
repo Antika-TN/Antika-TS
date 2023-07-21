@@ -76,7 +76,7 @@ const AdminControler ={
         try {
           const products = await Products.findAll({
             include: [
-              { model: user, attributes: ['firstName','lastName','image'], as: 'User' },
+              { model: user, attributes: ['firstName','lastName','imageProfile'], as: 'User' },
             ]
           });
           res.status(200).json({ message: 'Products retrieved successfully',products });
@@ -158,6 +158,16 @@ const AdminControler ={
         }
       },
 
+      async getCategoryProduct(req,res){
+        try{
+            const Category= await Products.getAttributes().Category
+
+            res.status(200).json({message:'Category retrieved successfully',Category})
+        } catch (error){
+            console.log('error retrieving Category:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
 
       async getFurnitureProduct(req,res){
         try{
