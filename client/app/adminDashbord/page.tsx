@@ -1,4 +1,6 @@
+
 import { DashboardTable ,Cards } from '@/components'
+
 import React from 'react'
 
 
@@ -6,6 +8,7 @@ const page = () => {
     
   
   return (
+
     <div>
 <div>
     <Cards/>
@@ -15,6 +18,7 @@ const page = () => {
      
     <DashboardTable/>
     </div>
+
     </div>
   )
 }
