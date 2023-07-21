@@ -6,8 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Link  from 'next/link'
 import Button from '@mui/material/Button';
 
-
-interface furniture {
+interface vintage {
     id: number
     name: string 
     description: string 
@@ -19,20 +18,20 @@ interface furniture {
     }
   }
 
-function Furniture() {
-    const [FurnitureProduct, setFurnitureProduct] = useState<furniture[]>([])
+function Vintage() {
+    const [VintageProduct, setVintageProduct] = useState<vintage[]>([])
 
     useEffect(() => {
-        fetchFurnitureProduct()
+        fetchVintageProduct()
     }, []);
   
-    async function fetchFurnitureProduct() {
+    async function fetchVintageProduct() {
       try {
   
-        const response = await fetch('http://localhost:3000/admin/getFurnitureProduct')
+        const response = await fetch('http://localhost:3000/admin/getVintageProduct')
         const data = await response.json()
 
-        setFurnitureProduct(data.Furniture)
+        setVintageProduct(data.Vintage)
     
       } catch (error) {
         console.error('Error', error)
@@ -60,7 +59,7 @@ function Furniture() {
         const handleDelete = async (id:number) => {
           try{
             await deleteProduct(id)
-            fetchFurnitureProduct()
+            fetchVintageProduct()
           }catch(error){
     console.error('Error deleting product:',error)
           }
@@ -69,27 +68,27 @@ function Furniture() {
 
   return (
     <div>
-       <div>
+        <div>
     <Link href="/admin/adminDashbord">
                <Button variant="contained" color="primary">go back to dashboard</Button>
              </Link>
     </div>
     <div>
-      <List className='card'>
-      {FurnitureProduct.map((furniture) => (
-        <ListItem key={furniture.id}>
-          <ListItemText className='ctii' primary={furniture.name} secondary={furniture.price} />
-          <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(furniture.id)}>
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      ))}
-    </List>
+           <List className='card'>
+    {VintageProduct.map((vintage) => (
+      <ListItem key={vintage.id}>
+        <ListItemText className='ctii' primary={vintage.name} secondary={vintage.price} />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(vintage.id)}>
+            <DeleteIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    ))}
+  </List>
     </div>
     </div>
   )
 }
 
-export default Furniture
+export default Vintage

@@ -96,7 +96,9 @@ function Category() {
             onClick={(event) => handleMenuItemClick(event, index)}
           >
             <Link href={`/admin/${option}`}>
-              <Button>{option}</Button> 
+              <Button>
+                {option}
+                </Button> 
                 </Link>
           </MenuItem>
         ))}

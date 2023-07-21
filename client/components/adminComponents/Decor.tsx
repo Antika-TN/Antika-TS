@@ -6,8 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Link  from 'next/link'
 import Button from '@mui/material/Button';
 
-
-interface furniture {
+interface decor {
     id: number
     name: string 
     description: string 
@@ -19,20 +18,20 @@ interface furniture {
     }
   }
 
-function Furniture() {
-    const [FurnitureProduct, setFurnitureProduct] = useState<furniture[]>([])
+function Decor() {
+    const [DecorProduct, setDecorProduct] = useState<decor[]>([])
 
     useEffect(() => {
-        fetchFurnitureProduct()
+        fetchDecorProduct()
     }, []);
   
-    async function fetchFurnitureProduct() {
+    async function fetchDecorProduct() {
       try {
   
-        const response = await fetch('http://localhost:3000/admin/getFurnitureProduct')
+        const response = await fetch('http://localhost:3000/admin/getDecorProduct')
         const data = await response.json()
 
-        setFurnitureProduct(data.Furniture)
+        setDecorProduct(data.Decor)
     
       } catch (error) {
         console.error('Error', error)
@@ -60,7 +59,7 @@ function Furniture() {
         const handleDelete = async (id:number) => {
           try{
             await deleteProduct(id)
-            fetchFurnitureProduct()
+            fetchDecorProduct()
           }catch(error){
     console.error('Error deleting product:',error)
           }
@@ -69,27 +68,27 @@ function Furniture() {
 
   return (
     <div>
-       <div>
+         <div>
     <Link href="/admin/adminDashbord">
                <Button variant="contained" color="primary">go back to dashboard</Button>
              </Link>
     </div>
     <div>
-      <List className='card'>
-      {FurnitureProduct.map((furniture) => (
-        <ListItem key={furniture.id}>
-          <ListItemText className='ctii' primary={furniture.name} secondary={furniture.price} />
-          <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(furniture.id)}>
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      ))}
-    </List>
-    </div>
-    </div>
+    <List className='card'>
+    {DecorProduct.map((decor) => (
+      <ListItem key={decor.id}>
+        <ListItemText className='ctii' primary={decor.name} secondary={decor.price} />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(decor.id)}>
+            <DeleteIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    ))}
+  </List>
+  </div>
+  </div>
   )
 }
 
-export default Furniture
+export default Decor
