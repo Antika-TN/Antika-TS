@@ -6,6 +6,9 @@ interface Prodact {
       price:number;
       stock:number;
       Category:string
+      createdAt?: string
+      updatedAt:? string
+      UserId?: number
 }
 interface Comments 
     {
@@ -37,7 +40,6 @@ interface Comments
       }
     }
   interface OneProdact{
-    
         id: number
         name: string
         image: string
@@ -45,8 +47,8 @@ interface Comments
         price: number
         stock: number
         Category: string
-        createdAt: string
-        updatedAt: string
-        UserId: number
       
+  }
+  interface ContextInter{
+    love:number
   }

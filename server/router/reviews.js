@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {getAll}=require('../controllers/reviews')
+const {getAll, addReview}=require('../controllers/reviews')
 
 
 router.get('/:id',/*  middleware ,controller */getAll);
+router.post('/:ClientId/:ProductId',addReview);
 
 
 

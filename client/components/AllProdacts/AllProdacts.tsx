@@ -6,6 +6,7 @@ import axios from 'axios'
 
 function AllProdacts() {
   const [data,setData]=useState<Prodact[]>([])
+  const [catigorie,setCatigorie]=useState('')
   useEffect(()=>{
    fetchData()
   },data)

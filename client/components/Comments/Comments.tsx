@@ -2,17 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import axios from 'axios'
-function Comments({  }) {
+function Comments() {
     const [comments,setComments]=useState<Comments[]>([])
 //   if (!el || !el.id) {
 //     return null;
 //   }
 useEffect(()=>{
     axios.get<Comments[]>('http://127.0.0.1:3000/reviews/1')
-    .then((res)=>setComments(res.data))
+    .then((res)=>{setComments(res.data)})
     .catch(err=>console.log(err))
-})
-
+},[])
   return (
     <Box>
       <Card
@@ -26,19 +25,20 @@ useEffect(()=>{
           border:'green'
         }}
       >
-            {comments.map(el=>(
-
-        <CardContent>
+            {comments.map((el,i:number)=>{
+return(
+        <CardContent key={i}>
           <Typography gutterBottom variant="h5" color={"white"}>
-            {el.User.firstName} {el.User.lastName}
+            {el?.User?.firstName} 
+            {el?.User?.lastName}
           </Typography>
           <Typography
             style={{ fontFamily: "Poppins", color: "#FFF", fontSize: "20px" }}
           >
             {el.comment} 
           </Typography>
-        </CardContent>
-            ))}
+        </CardContent>)
+})}
       </Card>
   
     </Box>

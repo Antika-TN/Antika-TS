@@ -7,19 +7,20 @@ import AddComment from '../AddComment/AddComment';
 import axios from 'axios'
 function ProdactDetails() {
   const [show, setShow] = useState(false)
-  const [oneComment,setOneComment]=useState<OneProdact >([])
+  const [onProdact,setOnProdact]=useState< Prodact>()
+  const [idProdact,setIdProdact]=useState<number>(1)
   useEffect(()=>{
-    axios.get('http://127.0.0.1:3000/products/1')
-    .then((res)=>setOneComment(res.data))
+    axios.get<Prodact>(`http://127.0.0.1:3000/products/${idProdact}`)
+    .then((res)=>setOnProdact(res.data))
     .catch(err=>console.log(err))
   },[])
+
   const openClick = () => {
     setShow(true);
   };
   const closeClick = () => {
     setShow(false);
   }; 
-  {console.log('onnnn',oneComment)}
   return (
     <Box>
     <Box >
@@ -28,14 +29,14 @@ function ProdactDetails() {
         component="img"
         alt="image of prodact"
         height="140"
-        image={oneComment.image}
+        image={onProdact?.image}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-       {oneComment.name}
+       {onProdact?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {oneComment.description}
+          {onProdact?.description}
         </Typography>
       </CardContent>
     </Card>
@@ -50,7 +51,7 @@ function ProdactDetails() {
       Add new Comment
     </Button>
   </Box>
-        <Box> <AddComment closeClick={closeClick} show={show} /> </Box>
+        <Box> <AddComment closeClick={closeClick} show={show} idProdact={idProdact} /> </Box>
   <Box>
     <Comments/>
   </Box>

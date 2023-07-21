@@ -7,19 +7,31 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 type Props = {
   ele: Prodact
 }
-// const dataContext=createContext<GlobalContent>()
+type ContextInter = {
+  love: number;
+  setLove: React.Dispatch<React.SetStateAction<number>>;
+
+};    
+export let DataContext:React.Context<T>;
 const ProdactCard: React.FC<Props> = ({ ele }) => {
-  const [love, setLove] = useState(0)
+  const [love, setLove] = useState<number>(0)
   const [iconColor, setIconColor] = useState('white')
+  DataContext=createContext<ContextInter>({
+    love:love,
+    setLove:setLove
+  });
+  console.log(DataContext);
+  
   // if(!product){
   //   return null
   // }
   const handelClickIcon = () => {
-    iconColor === 'white' ? setIconColor('red') : setIconColor('white')
-    love === 0 ? setLove(1) : setLove(0)
-    console.log(iconColor, love)
+    iconColor === 'white'&&love===0 ? setIconColor('red') : setIconColor('white')
+    love === 0 && iconColor==='white' ? setLove(1) : setLove(0)
   }
+  console.log('love',love)
   return (
+    <DataContext.Provider value={{love,setLove}}>
     <Box key={ele.id} sx={{
       backgroundColor: "rgba(255, 255, 255, 0.1)",
       width: "284px",
@@ -104,6 +116,7 @@ const ProdactCard: React.FC<Props> = ({ ele }) => {
         >Buy Now </Button>
       </Box>
     </Box>
+    </DataContext.Provider>
   )
 }
 

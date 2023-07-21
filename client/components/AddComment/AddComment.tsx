@@ -1,18 +1,29 @@
 'use client'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextareaAutosize } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import axios from 'axios'
+import {DataContext} from '../productCard/ProdactCard'
 interface close {
-    closeClick():void
-    show:boolean
+  closeClick():void
+  show:boolean
+  idProdact:number
 }
 function AddComment(props:close) {
-    const [comment,setComment]=useState('')
+  const {love,setLove}=useContext(DataContext)
+  console.log('lll',love)
+ console.log(setLove);
+ 
+  setLove((prev:number)=>{
+console.log('prev',prev);
+})
+    const [comment,setComment]=useState<string>('')
+    useEffect(()=>{
+    },[])
     const addComment = (comment:string) => {
         axios
-          .post(`http://localhost:3000/reviews/1/1`, {
+          .post(`http://localhost:3000/reviews/1/${props.idProdact}`, {
             comment: comment,
-            // rating: value,
+            rating: love,
           })
           .then(() => alert("done"))
           .catch((err) => console.log(err));
