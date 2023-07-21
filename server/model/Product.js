@@ -32,4 +32,5 @@ const Product = sequelize.define('Product', {
 Product.belongsTo(User);
 
 
+
 module.exports = Product;

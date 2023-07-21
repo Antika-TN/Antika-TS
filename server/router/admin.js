@@ -13,6 +13,8 @@ router.get("/getDecorProduct",AdminControler.getDecorProduct);
 router.get("/getAccessoriesProduct",AdminControler.getAccessoriesProduct);
 router.get("/getVintageProduct",AdminControler.getVintageProduct);
 router.get("/sellerOrders/:id",AdminControler.sellerOrders);
+router.get("/getCategoryProduct",AdminControler.getCategoryProduct);
+
 // router.get("/productminPrice/:id",AdminControler.productminPrice);
 
 router.delete("/deleteSeller/:id",AdminControler.deleteSeller)
