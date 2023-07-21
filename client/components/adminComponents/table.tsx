@@ -15,9 +15,10 @@ interface Seller {
 
 function DashboardTable() {
     const [sellersname, setSellersname] = useState<Seller[]>([]);
-
+  
     useEffect(() => {
         fetchSellersData();
+        
       }, []);
   
     async function fetchSellersData() {
@@ -29,6 +30,7 @@ function DashboardTable() {
           console.error('Error fetching data:', error);
         }
       }
+    
 
   return (
     <TableContainer component={Paper}    sx={{ background: 'linear-gradient(90deg, #984D38, #181E41 60%)'}}>
@@ -55,7 +57,7 @@ function DashboardTable() {
               <TableCell id='table-red'>+92,96</TableCell>
               <TableCell id="table-green">-16,38</TableCell>
               <TableCell id='table-white'>12,99</TableCell>
-              <TableCell id='table-white'>5,9K</TableCell>
+              <TableCell id='table-white'>sellerOrders</TableCell>
               <TableCell id='table-white'>10K</TableCell>
             </TableRow>
           ))}

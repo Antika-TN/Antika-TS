@@ -1,10 +1,15 @@
 'use client'
-import React from 'react'
-import { useState , useEffect } from 'react'
-import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import {  IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Link  from 'next/link'
+import Link from 'next/link';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import './style.css'
 
 
 interface accessories {
@@ -15,8 +20,10 @@ interface accessories {
     stock:number
     Category:string
     User:{
-    imageProfile:string
-    }
+      imageProfile:string
+      firstName:string
+      }
+      image:string
   }
 
 function Accessories() {
@@ -70,23 +77,40 @@ function Accessories() {
   return (
     <div>
          <div>
-    <Link href="/admin/adminDashbord">
-               <Button variant="contained" color="primary">go back to dashboard</Button>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
-    <div>
-      <List className='card'>
-    {AccessoriesProduct.map((accessories) => (
-      <ListItem key={accessories.id}>
-        <ListItemText className='ctii' primary={accessories.name} secondary={accessories.price} />
-        <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(accessories.id)}>
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    ))}
-  </List>
+    <div id='wrapper'>
+      {AccessoriesProduct.map((accessories) => (
+        <Card key={accessories.id} className='card'>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {`Product: ${accessories.name}`}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {`Category: ${accessories.Category}`}
+            </Typography>
+            {accessories.image && (
+              <Image width="250" height="150" src={accessories.image} alt={`Product Image - ${accessories.name}`} />
+            )}
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Description: ${accessories.description}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Price: ${accessories.price}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Stock: ${accessories.stock}`}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(accessories.id)}>
+              <DeleteIcon className='deleteicon' />
+            </IconButton>
+          </CardActions>
+        </Card>
+      ))}
     </div>
     </div>
   )

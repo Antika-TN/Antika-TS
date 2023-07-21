@@ -1,10 +1,15 @@
 'use client'
-import React from 'react'
-import { useState , useEffect } from 'react'
-import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import {  IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Link  from 'next/link'
+import Link from 'next/link';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import './style.css'
 
 
 interface furniture {
@@ -16,7 +21,9 @@ interface furniture {
     Category:string
     User:{
     imageProfile:string
+    firstName:string
     }
+    image:string
   }
 
 function Furniture() {
@@ -70,23 +77,40 @@ function Furniture() {
   return (
     <div>
        <div>
-    <Link href="/admin/adminDashbord">
-               <Button variant="contained" color="primary">go back to dashboard</Button>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
-    <div>
-      <List className='card'>
+    <div id='wrapper'>
       {FurnitureProduct.map((furniture) => (
-        <ListItem key={furniture.id}>
-          <ListItemText className='ctii' primary={furniture.name} secondary={furniture.price} />
-          <ListItemSecondaryAction>
+        <Card key={furniture.id} className='card'>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {`Product: ${furniture.name}`}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {`Category: ${furniture.Category}`}
+            </Typography>
+            {furniture.image && (
+              <Image width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
+            )}
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Description: ${furniture.description}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Price: ${furniture.price}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Stock: ${furniture.stock}`}
+            </Typography>
+          </CardContent>
+          <CardActions>
             <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(furniture.id)}>
-              <DeleteIcon />
+              <DeleteIcon className='deleteicon' />
             </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
+          </CardActions>
+        </Card>
       ))}
-    </List>
     </div>
     </div>
   )

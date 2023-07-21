@@ -1,10 +1,15 @@
 'use client'
-import React from 'react'
-import { useState , useEffect } from 'react'
-import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import {  IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Link  from 'next/link'
+import Link from 'next/link';
 import Button from '@mui/material/Button';
+import Image from 'next/image';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import './style.css'
 
 interface vintage {
     id: number
@@ -14,8 +19,10 @@ interface vintage {
     stock:number
     Category:string
     User:{
-    imageProfile:string
-    }
+      imageProfile:string
+      firstName:string
+      }
+      image:string
   }
 
 function Vintage() {
@@ -69,23 +76,40 @@ function Vintage() {
   return (
     <div>
         <div>
-    <Link href="/admin/adminDashbord">
-               <Button variant="contained" color="primary">go back to dashboard</Button>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
-    <div>
-           <List className='card'>
-    {VintageProduct.map((vintage) => (
-      <ListItem key={vintage.id}>
-        <ListItemText className='ctii' primary={vintage.name} secondary={vintage.price} />
-        <ListItemSecondaryAction>
-          <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(vintage.id)}>
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    ))}
-  </List>
+    <div id='wrapper'>
+      {VintageProduct.map((vintage) => (
+        <Card key={vintage.id} className='card'>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {`Product: ${vintage.name}`}
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {`Category: ${vintage.Category}`}
+            </Typography>
+            {vintage.image && (
+              <Image width="250" height="150" src={vintage.image} alt={`Product Image - ${vintage.name}`} />
+            )}
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Description: ${vintage.description}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Price: ${vintage.price}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary">
+              {`Stock: ${vintage.stock}`}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(vintage.id)}>
+              <DeleteIcon className='deleteicon' />
+            </IconButton>
+          </CardActions>
+        </Card>
+      ))}
     </div>
     </div>
   )

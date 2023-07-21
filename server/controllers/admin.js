@@ -255,11 +255,12 @@ const AdminControler ={
 
     async sellerOrders(req,res){
         try{
-            const orders = await order.findAll({
+            const orders = await order.count({
                 where:{
                     UserId:req.params.id
                 }
             })
+            
             res.status(200).json({message:'orders retrieved successfully',orders})
         } catch (error){
             console.log('error retrieving orders:',error)
