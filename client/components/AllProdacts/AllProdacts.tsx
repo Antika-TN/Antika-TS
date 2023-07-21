@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react'
 import ProdactCard from '../productCard/ProdactCard'
 import {Box,Button} from '@mui/material'
 import axios from 'axios'
+
 function AllProdacts() {
   const [data,setData]=useState<Prodact[]>([])
+  const [catigorie,setCatigorie]=useState('')
   useEffect(()=>{
    fetchData()
   },data)
@@ -14,7 +16,7 @@ function AllProdacts() {
     .catch(err=>console.log(err))
   }
   
-
+console.log('object',data)
   return (
 
  <Box>
