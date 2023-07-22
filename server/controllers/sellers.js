@@ -28,16 +28,14 @@ const SellerController = {
       if (!user) {
         return res.status(404).json({ error: 'User not found.' });
       }
-
       const products = await Product.findAll( {
         where: {
           UserId: userId,
         },
       });
-
       const userDataWithProducts = {
-        user: user.toJSON(),
-        products: products.map((product) => product.toJSON()),
+        user,
+        products,
       };
 
       return res.status(200).json(userDataWithProducts);
