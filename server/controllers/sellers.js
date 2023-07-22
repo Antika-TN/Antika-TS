@@ -29,7 +29,7 @@ const SellerController = {
         return res.status(404).json({ error: 'User not found.' });
       }
 
-      const products = await Product.findAll({
+      const products = await Product.findAll( {
         where: {
           UserId: userId,
         },
