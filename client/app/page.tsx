@@ -31,14 +31,14 @@ console.log('home ',data)
     <div>
 
 
-      <AllProdacts data ={data}/>
 
       <TopBar/>
       <HeroSection/>
       <AboutUs/>
       <MoreInfo/>
       <Collection/>
-      <AllProdacts/>
+      
+      <AllProdacts data ={data}/>
       <Faq/>
       <Quality/>
       
