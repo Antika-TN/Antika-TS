@@ -1,25 +1,9 @@
-import { PlusOutlined } from '@ant-design/icons';
-import {
-  Upload,
-} from 'antd';
-import React, { useState } from 'react';
-import {Form} from 'antd';
+import React from 'react'
 
-const normFile = (e: any) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
-const FormDisabledDemo: React.FC = () => {
+function chosse() {
   return (
-    <>
-      <Form>
-        
-      </Form>
-    </>
-  );
-};
+    <div>chosse</div>
+  )
+}
 
-export default FormDisabledDemo
+export default chosse
