@@ -117,7 +117,19 @@ function page() {
 
             <div className='created'>
               <h1>Creation: 2023-07-21 </h1>
-               
+            </div>
+
+            <div className='info' >
+            <span className='info-title' >Address :</span>
+            <span className='info-profile' > L.A </span>
+            <div>
+            <span className='info-title' >Phone Number :</span>
+            <span className='info-profile'> +444 5555 666 88</span>
+            </div>
+            <div className='email'>
+            <span className='info-email' >E-mail :</span>
+            <span className='infoemail' > mayasmith@gmail.com</span>
+            </div>
             </div>
 
             
