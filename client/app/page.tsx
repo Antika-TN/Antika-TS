@@ -32,7 +32,6 @@ console.log('home ',data)
 
 
 
-      <TopBar/>
       <HeroSection/>
       <AboutUs/>
       <MoreInfo/>
