@@ -10,7 +10,12 @@ interface Seller {
     id: number;
     firstName: string;   
     lastName: string;  
-    
+    orderCount?: number;
+  }
+
+  interface OrderResponse {
+    message: string;
+    orders: number;
   }
 
 function DashboardTable() {
@@ -18,7 +23,7 @@ function DashboardTable() {
   
     useEffect(() => {
         fetchSellersData();
-        
+       
       }, []);
   
     async function fetchSellersData() {
@@ -26,6 +31,26 @@ function DashboardTable() {
           const response = await fetch('http://localhost:3000/admin/sellers'); 
           const data = await response.json();
           setSellersname(data.sellers);
+
+          data.sellers.forEach((seller: Seller) => {
+            fetchOrdersData(seller.id)
+          });
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+      
+      async function fetchOrdersData(id:number) {
+        try {
+          const response = await axios.get<OrderResponse>(`http://localhost:3000/admin/sellerOrders/${id}`); 
+          const data = response.data;
+          
+
+          setSellersname((prevSellers) =>
+          prevSellers.map((seller) =>
+            seller.id === id ? { ...seller, orderCount: data.orders } : seller
+          )
+        );
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -43,7 +68,7 @@ function DashboardTable() {
           <TableCell id='table-white'>24H%</TableCell>
           <TableCell id='table-white'>7D%</TableCell>
           <TableCell id='table-white'>Floor Price</TableCell>
-          <TableCell id='table-white'>Owners</TableCell>
+          <TableCell id='table-white'>Order Count</TableCell>
           <TableCell id='table-white'>Items</TableCell>
         </TableRow>
       </TableHead>
@@ -57,7 +82,7 @@ function DashboardTable() {
               <TableCell id='table-red'>+92,96</TableCell>
               <TableCell id="table-green">-16,38</TableCell>
               <TableCell id='table-white'>12,99</TableCell>
-              <TableCell id='table-white'>sellerOrders</TableCell>
+              <TableCell id='table-white'>{seller.orderCount ?? 'Loading...'}</TableCell>
               <TableCell id='table-white'>10K</TableCell>
             </TableRow>
           ))}
