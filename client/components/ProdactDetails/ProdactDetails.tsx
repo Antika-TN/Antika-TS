@@ -1,19 +1,24 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {Box,Button,CardMedia,Card,CardContent} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Comments from '../Comments/Comments';
 import AddComment from '../AddComment/AddComment';
+import {DataContext} from '../productCard/ProdactCard'
+
 import axios from 'axios'
 function ProdactDetails() {
+  const {love}=useContext(DataContext)
+  const {idProdact}=useContext(DataContext)
+  console.log('idProdactDetalis',idProdact )
   const [show, setShow] = useState(false)
   const [onProdact,setOnProdact]=useState< Prodact>()
-  const [idProdact,setIdProdact]=useState<number>(1)
+  const [idProdac,setIdProdact]=useState<number>(idProdact)
   useEffect(()=>{
-    axios.get<Prodact>(`http://127.0.0.1:3000/products/${idProdact}`)
+    axios.get<Prodact>(`http://127.0.0.1:3000/products/${idProdac}`)
     .then((res)=>setOnProdact(res.data))
     .catch(err=>console.log(err))
-  },[])
+  },[idProdac])
 
   const openClick = () => {
     setShow(true);
@@ -21,6 +26,7 @@ function ProdactDetails() {
   const closeClick = () => {
     setShow(false);
   }; 
+  console.log('iiii',idProdac)
   return (
     <Box>
     <Box >
