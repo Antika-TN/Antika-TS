@@ -90,13 +90,15 @@ function Category() {
       >
         {categories.map((option, index) => (
           <MenuItem
-            key={option}
+            key= {option}
             disabled={index === -1}
             selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}
           >
             <Link href={`/admin/${option}`}>
-              <Button>{option}</Button> 
+              <Button>
+                {option}
+                </Button> 
                 </Link>
           </MenuItem>
         ))}

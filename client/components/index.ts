@@ -10,6 +10,10 @@ import Seller from "./adminComponents/Seller"
 import Product from "./adminComponents/Product"
 import Furniture from "./adminComponents/Furniture"
 
+import Accessories from "./adminComponents/Accessories"
+import Vintage from "./adminComponents/Vintage"
+import Decor from "./adminComponents/Decor"
+
 export{
     ProdactCard,
     AllProdacts,
@@ -21,5 +25,11 @@ export{
     Client,
     Seller,
     Product,
-    Furniture
+
+    Furniture,
+    Accessories,
+    Vintage,
+    Decor
+ 
+
 }

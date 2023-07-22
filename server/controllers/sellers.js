@@ -1,4 +1,5 @@
-const user = require ('../model/User')
+const User = require ('../model/User')
+const Product = require ('../model/Product')
 const SellerController = {
    
   async createUser(req, res) {
@@ -20,14 +21,28 @@ const SellerController = {
   },
 
   async getUserById(req, res) {
+    const userId = req.params.id;
     try {
-      const user = await user.findByPk(req.params.id);
+      const user = await User.findByPk(userId);
+
       if (!user) {
         return res.status(404).json({ error: 'User not found.' });
       }
-      return res.status(200).json(user);
+
+      const products = await Product.findAll({
+        where: {
+          UserId: userId,
+        },
+      });
+
+      const userDataWithProducts = {
+        user: user.toJSON(),
+        products: products.map((product) => product.toJSON()),
+      };
+
+      return res.status(200).json(userDataWithProducts);
     } catch (error) {
-      return res.status(500).json({ error: 'Failed to fetch the user.' });
+      return res.status(500).json({ error: 'Failed to fetch the user and products.' });
     }
   },
 
