@@ -1,3 +1,4 @@
+
 /* .client{
     width: 1440px;
 height: 2468px;
@@ -97,3 +98,7 @@ flex-shrink: 0;
     margin-bottom: 150px;
     margin-left: 280px;
 }
+body{
+  background: linear-gradient(123deg, #984D38 0%, #181E41 63%);
+}
+

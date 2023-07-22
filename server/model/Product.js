@@ -23,12 +23,14 @@ const Product = sequelize.define('Product', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+
   Category:{
     type:DataTypes.ENUM (['Furniture','Decor','Accessories','Vintage ','Tools'])
   }
 });
 
 Product.belongsTo(User);
+
 
 
 module.exports = Product;
