@@ -28,9 +28,9 @@ module.exports = {
 
   addReview(req, res) {
     const { rating, comment } = req.body;
-    const ClientId = req.params.ClientId;
+    const UserId = req.params.ClientId;
     const ProductId = req.params.ProductId;
-    Review.create({ rating, comment, ClientId, ProductId })
+    Review.create({ rating, comment, UserId, ProductId })
       .then((reslmt) => {
         res.status(201).send(reslmt);
       })

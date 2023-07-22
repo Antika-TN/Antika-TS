@@ -10,18 +10,16 @@ interface close {
 }
 function AddComment(props:close) {
   const {love,setLove}=useContext(DataContext)
-  console.log('lll',love)
- console.log(setLove);
- 
-  setLove((prev:number)=>{
-console.log('prev',prev);
-})
+  const {idProdact}=useContext(DataContext)
+  console.log('idProdact',idProdact)
+//   setLove((prev:number)=>{
+// console.log('prev',prev);
+// })
     const [comment,setComment]=useState<string>('')
-    useEffect(()=>{
-    },[])
-    const addComment = (comment:string) => {
+
+    const addComment = () => {
         axios
-          .post(`http://localhost:3000/reviews/1/${props.idProdact}`, {
+          .post(`http://localhost:3000/reviews/1/${idProdact}`, {
             comment: comment,
             rating: love,
           })
@@ -50,7 +48,7 @@ console.log('prev',prev);
           </DialogContent>
           <DialogActions style={{ background: "transparent" }}>
             <Button onClick={props.closeClick}>Cancel</Button>
-            <Button onClick={()=>addComment}>Send comment</Button>
+            <Button onClick={()=>addComment()}>Send comment</Button>
           </DialogActions>
         </Dialog>
     </Box>

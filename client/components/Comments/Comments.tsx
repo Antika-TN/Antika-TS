@@ -1,17 +1,21 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import axios from 'axios'
+import { DataContext } from "../productCard/ProdactCard";
+
 function Comments() {
     const [comments,setComments]=useState<Comments[]>([])
+    const {idProdact}=useContext(DataContext)
+  console.log('idProdact',idProdact)
 //   if (!el || !el.id) {
 //     return null;
 //   }
 useEffect(()=>{
-    axios.get<Comments[]>('http://127.0.0.1:3000/reviews/1')
+    axios.get<Comments[]>(`http://127.0.0.1:3000/reviews/${idProdact}`)
     .then((res)=>{setComments(res.data)})
     .catch(err=>console.log(err))
-},[])
+},[comments])
   return (
     <Box>
       <Card
