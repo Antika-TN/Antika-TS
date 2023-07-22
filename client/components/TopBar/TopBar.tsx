@@ -24,7 +24,7 @@ interface Page {
 
 const pages: Page[] = [
   { label: "home", link: "/" },
-  { label: "about us", link: "/aboutus" },
+  { label: "about us", link: "/Aboutus" },
   { label: "all products", link: "/product" },
 ];
 
@@ -186,7 +186,7 @@ function TopBar() {
           {!isLoggedIn && (
             <Button
               component={Link}
-              href="/login"
+              href="/SignIn"
               passHref
               variant="outlined"
               color="inherit"
