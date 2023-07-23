@@ -184,7 +184,7 @@
     font-weight: 600;
     word-wrap: break-word;
     margin-top: -49px ;
-    margin-left : 700px ;
+    margin-left : 698px ;
 }
 .tag{
     color: rgba(255, 255, 255, 0.50);
@@ -204,7 +204,7 @@
     word-wrap: break-word;
     word-break: break-all;
     margin-top: -43px ;
-    margin-left : 840px ;
+    margin-left : 863px ;
 }
 .comment{
     color: white;
@@ -232,3 +232,14 @@
   height: 619px;
   position: relative;
 }
+.delete{
+  margin-top: 13px ;
+  margin-left : 1330px ; 
+}
+
+.update{
+  margin-top: 13px ;
+  margin-left : 1330px ; 
+}
+
+
