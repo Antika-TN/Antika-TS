@@ -33,8 +33,8 @@ function AllProdacts(props:Props) {
 // console.log('object',filtredData)
   return (
 
- <Box>
-     <Box sx={{width: '1198', height: '40', justifyContent: 'center', alignItems: 'center', gap: '20', display: 'inline-flex'}}>
+ <Box sx={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)" }}>
+     <Box sx={{ gridColumn: "2/6 ",width: '1198', height: '40', justifyContent: 'center', alignItems: 'center', gap: '20', display: 'inline-flex',marginRight:'150px'}}>
         <Button onClick={()=>setCatigorie('AllProdacts')} style={{width: '208', height: '40', paddingLeft: '49', paddingRight: '49', paddingTop: '5', paddingBottom: '5', background: 'var(--white-10, rgba(255, 255, 255, 0.10))', borderRadius: '10', justifyContent: 'center', alignItems: 'center', gap: '8', display: 'inline-flex',color:'white',fontSize:'20px',fontStyle:'normal',fontWeight: '500',lineHeight: 'normal', margin:'5px'}}>All collections </Button>
         <Button onClick={()=>setCatigorie('Furniture')} style={{width: '208', height: '40', paddingLeft: '49', paddingRight: '49', paddingTop: '5', paddingBottom: '5', background: 'var(--white-10, rgba(255, 255, 255, 0.10))', borderRadius: '10', justifyContent: 'center', alignItems: 'center', gap: '8', display: 'inline-flex',color:'white',fontSize:'20px',fontStyle:'normal',fontWeight: '500',lineHeight: 'normal', margin:'5px'}}>Furniture </Button>
         <Button onClick={()=>setCatigorie('Decor')} style={{width: '208', height: '40', paddingLeft: '49', paddingRight: '49', paddingTop: '5', paddingBottom: '5', background: 'var(--white-10, rgba(255, 255, 255, 0.10))', borderRadius: '10', justifyContent: 'center', alignItems: 'center', gap: '8', display: 'inline-flex',color:'white',fontSize:'20px',fontStyle:'normal',fontWeight: '500',lineHeight: 'normal', margin:'5px'}}>Decor </Button>
@@ -42,8 +42,7 @@ function AllProdacts(props:Props) {
         <Button onClick={()=>setCatigorie('Vintage')} style={{width: '208', height: '40', paddingLeft: '49', paddingRight: '49', paddingTop: '5', paddingBottom: '5', background: 'var(--white-10, rgba(255, 255, 255, 0.10))', borderRadius: '10', justifyContent: 'center', alignItems: 'center', gap: '8', display: 'inline-flex',color:'white',fontSize:'20px',fontStyle:'normal',fontWeight: '500',lineHeight: 'normal', margin:'5px'}}>Vintage </Button>
         <Button onClick={()=>setCatigorie('Tools')} style={{width: '208', height: '40', paddingLeft: '49', paddingRight: '49', paddingTop: '5', paddingBottom: '5', background: 'var(--white-10, rgba(255, 255, 255, 0.10))', borderRadius: '10', justifyContent: 'center', alignItems: 'center', gap: '8', display: 'inline-flex',color:'white',fontSize:'20px',fontStyle:'normal',fontWeight: '500',lineHeight: 'normal', margin:'5px'}}>Tools </Button>
      </Box>
-     <Box>
-      
+     <Box sx={{display: "grid",gridColumn: "2/6",gridTemplateColumns: "repeat(4, 1fr)"}}>
      {filtredData.map(element=>(
       <ProdactCard ele={element} />
      ))}
