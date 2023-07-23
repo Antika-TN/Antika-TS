@@ -262,6 +262,7 @@ const AdminControler ={
             })
             
             res.status(200).json({message:'orders retrieved successfully',orders})
+           
         } catch (error){
             console.log('error retrieving orders:',error)
             res.status(500).json({error:'Internal server error'})

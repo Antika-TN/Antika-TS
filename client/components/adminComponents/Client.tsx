@@ -1,14 +1,23 @@
 'use client'
-import React, { useState , useEffect } from 'react'
-import { List, ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import {  IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-  import Link  from 'next/link'
-  import Button from '@mui/material/Button';
+import Link from 'next/link';
+import Button from '@mui/material/Button';
+import Image from 'next/image';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import './style.css'
 
   interface Clients {
     id: number;
     firstName: string;   
     lastName: string;  
+    address:string
+    imageProfile:string;
+
     
   }
 
@@ -69,21 +78,31 @@ console.error('Error deleting seller:',error);
             </Link>
    </div>
 
-<div>
-    <List className='card'>
+   <div id='wrapper'>
       {clientsname.map((client) => (
-        <ListItem key={client.id}>
-          <ListItemText className='ctii' primary={`FirstName: ${client.firstName}`} secondary={`LastName: ${client.lastName}`} />
-          
-          {/* <ListItemText className='ctii' primary={`CreatedAt: ${client.createdAt}`} secondary={`PhoneNumber: ${client.phoneNumber}`} /> */}
-          <ListItemSecondaryAction>
+        <Card key={client.id} className='card'>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {`FirstName: ${client.firstName}`}
+            </Typography>
+            <Typography variant="subtitle1">
+              {`LastName: ${client.lastName}`}
+            </Typography>
+            {client.imageProfile && (
+              <Image width="250" height="150" src={client.imageProfile} alt={`Product Image - ${client.imageProfile}`} />
+            )}
+            <Typography variant="subtitle2">
+              {`Address: ${client.address}`}
+            </Typography>
+            
+          </CardContent>
+          <CardActions>
             <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(client.id)}>
-              <DeleteIcon />
+              <DeleteIcon className='deleteicon' />
             </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
+          </CardActions>
+        </Card>
       ))}
-    </List>
     </div>
     </div>
   )
