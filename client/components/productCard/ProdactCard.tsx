@@ -40,7 +40,9 @@ const ProdactCard: React.FC<Props> = ({ ele }) => {
       padding: "10px", display: 'flex',
       flexDirection: "column",
       alignItems: "center",
-      gap: "16px"
+      gap: "16px",
+      margin:"10px",
+      // gridTemplateColumns: "repeat(4, 1fr)"
     }}>
       <Link href={'/ProdactDetails'}  onClick={()=>setProd(ele.id)}><Avatar
         src={ele.image}

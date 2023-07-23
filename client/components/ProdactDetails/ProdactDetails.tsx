@@ -28,13 +28,13 @@ function ProdactDetails() {
   }; 
   console.log('iiii',idProdac)
   return (
-    <Box>
-    <Box >
-    <Card sx={{ maxWidth: 345 }} style={{margin:"20px" }}>
+    <Box sx={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>
+    <Box sx={{position:'fixed', background: "var(--white-10, rgba(255, 255, 255, 0.10))"  ,paddingBottom:'20%',margin:'10px 10px -1000px 0px',borderRadius:'8px',gridColumn: "1/2" }}>
+    <Card sx={{ maxWidth: 470 }} style={{margin:"20px" }}>
       <CardMedia
         component="img"
         alt="image of prodact"
-        height="140"
+        height="340"
         image={onProdact?.image}
       />
       <CardContent>
@@ -46,19 +46,19 @@ function ProdactDetails() {
         </Typography>
       </CardContent>
     </Card>
-  </Box>
-  <Box sx={{gridRow: "2", gridColumn: "1 " }}>
+  <Box >
     <Button
       variant="contained"
-       size="medium"
+      size="medium"
       onClick={openClick}
-      style={{ marginLeft: "20px", width:"90%" }}
-    >
+      style={{ marginLeft: "25px", width:"90%" }}
+      >
       Add new Comment
     </Button>
   </Box>
+      </Box>
         <Box> <AddComment closeClick={closeClick} show={show} idProdact={idProdact} /> </Box>
-  <Box>
+  <Box sx={{  gridColumn: "3/6 " ,marginLeft:'-100px'}}>
     <Comments/>
   </Box>
 </Box>
