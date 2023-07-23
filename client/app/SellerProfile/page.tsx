@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import styles from './page.module.css';
 import { Button, Dropdown, Space, Modal, Form, Input, Select,Upload,message } from 'antd';
@@ -17,6 +17,25 @@ interface Product {
 }
 
 const Index: React.FC = () => {
+  const [sellerData, setSellerData] = useState<any[]>([]);
+  const [sellerp, setSellerp] = useState<any[]>([]);
+
+  const fetchSellerData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/sellers/1');
+      setSellerData(response.data.user);
+      setSellerp(response.data.products)
+      console.log('Seller data:', response.data.products);
+    } catch (error) {
+      console.error('Error fetching seller data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSellerData();
+  }, []);
+
+
   const success = () => {
     message.success('Product added successfully!');
   };
@@ -83,10 +102,10 @@ const Index: React.FC = () => {
   return (
     <div className={styles.Container}>
       <div className={styles.BackgroundImage}>
-        <div className={styles.CoverImage}></div>
+      <div className={styles.CoverImage} style={{ backgroundImage: `url(${sellerData.imageCover})` }}></div>
         <div className={styles.photoContainer}>
           <div className={styles.addphoto}></div>
-          <img className={styles.profilepic} src="https://via.placeholder.com/120x120" alt="Profile" />
+          <img className={styles.profilepic} src={sellerData.imageProfile} alt="Profile" />
         </div>
         <Space direction="vertical" className={styles.setting}>
          <Space wrap>
@@ -95,27 +114,33 @@ const Index: React.FC = () => {
               </Dropdown>
          </Space>
            </Space>
-        <div className={styles.profilname}>Farhan Khan</div>
-        <div className={styles.subname}>@farhan</div>
-        <div className={styles.bio}>lvinar nerrrrrrrrrrgunc adipiscing.</div>
+        <div className={styles.profilname}>{sellerData.firstName} {sellerData.lastName}</div>
+        <div className={styles.subname}>@{sellerData.firstName} </div>
+        <div className={styles.bio}>hello my name is {sellerData.firstName} and i'm seller i want to start my own buisness</div>
         <div className={styles.photoGa}>
-          <img className={styles.picprod} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod1} src = "https://onlinepngtools.com/images/examples-onlinepngtools/400-by-400.png"alt="Product" /> 
-          <img className={styles.picprod2} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod3} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod4} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod5} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod6} src="https://via.placeholder.com/95x91" alt="Product" />
-          <img className={styles.picprod7} src="https://via.placeholder.com/95x91" alt="Product" />
-        </div>
+  {sellerp.map((product, i) => (
+    <img
+      key={i}
+      className={styles[`picprod${i + 1}`]} 
+      src={product.image|| 'https://via.placeholder.com/95x91'} 
+      alt="Product"
+    />
+  ))}
+</div>
         <div className={styles.categoryname}>Photos</div>
         <div className={styles.SeeAllPhotos}>See All Photos</div>
-        <img className= {styles.profilepicture}  src="https://via.placeholder.com/43x43" />
-        <div className= {styles.profilename} >Farhan Khan</div>
-        <div className={styles.tag} >@farhan</div>
-        <div className={styles.time} >4m</div>
-        <div className={styles.comment} >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        <img className= {styles.post} src="https://via.placeholder.com/666x426" />
+        <div className={styles.productContainer}>
+        {sellerp.map((product, i) => (
+          <div key={i} className={styles.productItem}>
+            <img className= {styles.profilepicture}  src={sellerData.imageProfile} />
+            <div className={styles.profilename}>{sellerData.firstName} {sellerData.lastName}</div>
+            <div className={styles.tag}>@{sellerData.firstName}</div>
+            <div className={styles.time}>4m</div>
+            <div className={styles.comment}>{product.description}</div>
+            <img className={styles.post} src={product.image || 'https://via.placeholder.com/666x426'} alt="Post" />
+          </div>
+        ))}
+      </div>
       </div>
       <Modal
         title="Add Product"

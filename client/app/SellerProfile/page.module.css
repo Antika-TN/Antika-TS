@@ -124,8 +124,8 @@
     width: 95px;
     height: 91px;
     border-radius: 4px;
-    margin-top: 89px ;
-    margin-left : 9px ;
+    margin-top: 73px ;
+    margin-left : 23px ;
     background-image : transparent;
   }
   .picprod2{
@@ -226,4 +226,9 @@
 .setting {
     margin-top: -2px ;
     margin-left : 613px ; 
+}
+.productItem{
+  width: 910px;
+  height: 619px;
+  position: relative;
 }
