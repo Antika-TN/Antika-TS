@@ -22,6 +22,8 @@ const getOne = function(req,res){
 
 const createClient = function(req,res){
     Client.create({ 
+        email:req.body.email,
+        password: req.body.password,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
         address:req.body.address,
@@ -41,7 +43,10 @@ const createClient = function(req,res){
 
 const updateClient = function(req,res){
   Client.update(
-  {firstName:req.body.firstName,
+  {
+    email:req.body.email,
+    password: req.body.password,
+    firstName:req.body.firstName,
     lastName:req.body.lastName,
     address:req.body.address,
     phoneNumber: req.body.phoneNumber,
