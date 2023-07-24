@@ -10,6 +10,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './style.css'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
 
   interface Clients {
     id: number;
@@ -102,7 +104,9 @@ console.error('Error deleting seller:',error);
     </div>
     <div>
    <Link href="/admin/adminDashbord">
-              <Button variant="contained" color="primary">go back to dashboard</Button>
+   
+              <Button variant="contained" color="primary">
+              <ArrowBackIosIcon className='arrowBackIcon'/>go back to dashboard</Button>
             </Link>
    </div>
     </div>

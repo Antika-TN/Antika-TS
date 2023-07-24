@@ -43,7 +43,7 @@
     border-radius: 100px;
     flex-shrink: 0;
     position: absolute;
-    left: 68px;
+    left: 37px;
     margin-top: -13px;
   }
   #table-white{
@@ -171,4 +171,13 @@ h1.titl {
 }
 .white{
   color: #ffffff69
+}
+.arrowBackIcon{
+  height: 200px;
+  width: 200px;
+  border-radius: 6px;
+  left: 5%;
+  margin: 3%;
+  position: relative;
+  top: 0%;
 }

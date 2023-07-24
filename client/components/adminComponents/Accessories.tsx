@@ -10,6 +10,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './style.css'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+
+
 
 
 interface accessories {
@@ -110,6 +113,7 @@ function Accessories() {
     </div>
     <div>
     <Link href="/admin/adminAllProduct">
+    <ArrowBackIosIcon className='arrowBackIcon'/>
                <Button variant="contained" color="primary">Go Back To Product</Button>
              </Link>
     </div>
