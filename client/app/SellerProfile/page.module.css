@@ -239,7 +239,10 @@
 
 .update{
   margin-top: 13px ;
-  margin-left : 1330px ; 
+  margin-left : -645px ; 
 }
-
+.add{
+  margin-top: -22px ;
+  margin-left : 359px ; 
+}
 

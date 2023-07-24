@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-import { DeleteOutlined,EditOutlined  } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import styles from "./page.module.css";
 import {
   Button,
@@ -29,6 +29,42 @@ interface Product {
 }
 
 const Index: React.FC = () => {
+  const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product>(null);
+  const [file,setFile]=useState<Event>()
+  const [imageLink,setImageLink]=useState()
+  const uploadImage =async () => {
+    const form = new FormData();
+    form.append("file", file);
+    form.append("upload_preset", "farescloud");
+    console.log(form)
+    await axios.post("https://api.cloudinary.com/v1_1/dt7t7wjql/upload", form).then((res) => {
+      console.log(res.data.secure_url)
+      setImageLink(res.data.secure_url)
+     
+    })
+    .catch((err)=>{console.log(err)})
+  };
+
+  const handleUpdateSubmit = async (values: { newProductName: string }) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/products/${selectedProduct.id}`,
+        {
+          description: values.newProductName,
+        }
+      );
+      console.log(selectedProduct)
+
+      message.success("Product updated successfully!");
+      setIsUpdateModalVisible(false);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error updating product:", error);
+      message.error("Failed to update product.");
+    }
+  };
+
   const confirm = (e: React.MouseEvent<HTMLElement>) => {
     console.log(e);
     message.success("Click on Yes");
@@ -46,14 +82,14 @@ const Index: React.FC = () => {
   const handleDeleteProduct = async (productId) => {
     try {
       await axios.delete(`http://localhost:3000/products/${productId}`);
-      message.success('Product deleted successfully!');
+      message.success("Product deleted successfully!");
       window.location.reload();
     } catch (error) {
-      console.error('Error deleting product:', error);
-      message.error('Failed to delete product.');
+      console.error("Error deleting product:", error);
+      message.error("Failed to delete product.");
     }
   };
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+
   const fetchSellerData = async () => {
     try {
       const response = await axios.get(
@@ -62,7 +98,6 @@ const Index: React.FC = () => {
       setSellerData(response.data.user);
       setSellerp(response.data.products);
       console.log("Seller data:", response.data.products);
-      
     } catch (error) {
       console.error("Error", error);
     }
@@ -71,13 +106,10 @@ const Index: React.FC = () => {
   useEffect(() => {
     fetchSellerData();
   }, []);
-
   const success = () => {
     message.success("Product added successfully!");
     window.location.reload();
-
   };
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -142,7 +174,7 @@ const Index: React.FC = () => {
         price: parseFloat(values.Productprice),
         stock: parseInt(values.Productstock),
         Category: values.Category,
-        image: values.image,
+        image: imageLink,
         UserId: userID,
       });
       console.log("Server response:", response.data);
@@ -161,9 +193,9 @@ const Index: React.FC = () => {
         <div className={styles.photoContainer}>
           <div className={styles.addphoto}></div>
           <img
-            className={styles.profilepic}
-            src={sellerData.imageProfile}
-            alt="Profile"
+              className={styles.profilepic}
+              src={sellerData.imageProfile}
+              alt="Profile"
           />
         </div>
         <Space direction="vertical" className={styles.setting}>
@@ -220,20 +252,31 @@ const Index: React.FC = () => {
                 okText="Yes"
                 cancelText="No"
               >
-
-            <Button danger shape="circle" icon={<DeleteOutlined />} className={styles.delete}/>
+                <Button
+                  danger
+                  shape="circle"
+                  icon={<DeleteOutlined />}
+                  className={styles.delete}
+                />
               </Popconfirm>
-
               <Popconfirm
-                title="update this product"
-                description="Are you sure to update this product ?"
-                onConfirm={() => handleDeleteProduct(product.id)}
-                onCancel={cancel}
-                okText="Yes"
-                cancelText="No"
-              >
-            <Button danger shape="circle" icon={<EditOutlined  />} className={styles.update}/>
-              </Popconfirm>
+              title="Update this product"
+              description="Are you sure to update this product ?"
+              onConfirm={() => {
+                setSelectedProduct(product);
+                setIsUpdateModalVisible(true);
+              }}
+              onCancel={cancel}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button
+                danger
+                shape="circle"
+                icon={<EditOutlined />}
+                className={styles.update}
+              />
+            </Popconfirm>
             </div>
           ))}
         </div>
@@ -286,19 +329,30 @@ const Index: React.FC = () => {
               <Select.Option value="Tools">Tools</Select.Option>
             </Select>
           </Form.Item>
-          <Form.Item
+
+          {/* <Form.Item
             name="image"
             label="Upload"
             valuePropName="fileList"
             getValueFromEvent={normFile}
+            onMetaChange={()=>console.log(normFile)}
           >
-            <Upload action="/upload.do" listType="picture-card">
-              <div>
+            <Upload action="/upload.do" listType="picture-card" >
+              <div >
                 <PlusOutlined />
-                <div style={{ marginTop: 8 }}>Upload</div>
+                <div style={{ marginTop: 8 }} >Upload</div>
               </div>
             </Upload>
           </Form.Item>
+           */}
+
+           <input type="file" onChange={(e:Event)=>{setFile(e?.target.files[0] as HTMLInputElement)}}/>
+           <Button onClick={()=>uploadImage()} className={styles.add}>
+           <PlusOutlined  />
+              Add to
+            </Button>
+            
+
           <Form.Item>
             <Button type="primary" htmlType="submit" onClick={success}>
               Add to your profile
@@ -306,6 +360,30 @@ const Index: React.FC = () => {
           </Form.Item>
         </Form>
       </Modal>
+
+      <Modal
+  title="Update Product"
+  visible={isUpdateModalVisible}
+  onCancel={() => setIsUpdateModalVisible(false)}
+  footer={null}
+>
+  <Form onFinish={handleUpdateSubmit}>
+    <Form.Item
+      name="newProductName"
+      label="New Product desc"
+      rules={[
+        { required: true, message: "Please enter a new product name" },
+      ]}
+    >
+      <Input placeholder="Enter new product name" />
+    </Form.Item>
+    <Form.Item>
+      <Button type="primary" htmlType="submit">
+        Update
+      </Button>
+    </Form.Item>
+  </Form>
+</Modal>
     </div>
   );
 };
