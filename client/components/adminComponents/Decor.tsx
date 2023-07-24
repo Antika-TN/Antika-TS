@@ -109,10 +109,11 @@ function Decor() {
         </Card>
       ))}
     </div>
-    <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product
-               <ArrowBackIosIcon className='arrowBackIcon'/></Button>
+    <div >
+    <Link href="/admin/adminAllProduct" >
+   
+               <Button variant="contained" className='buttonArrowBack'>
+               <ArrowBackIosIcon className='arrowBackIcon'/>Go Back To Product</Button>
              </Link>
     </div>
   </div>

@@ -109,11 +109,12 @@ function Furniture() {
         </Card>
       ))}
     </div>
-    <div>
-    <Link href="/admin/adminAllProduct">
+    <div >
+    <Link href="/admin/adminAllProduct" >
    
-               <Button variant="contained" color="primary">Go Back To Product
-               <ArrowBackIosIcon className='arrowBackIcon'/></Button>
+               <Button variant="contained" className='buttonArrowBack' >
+               <ArrowBackIosIcon className='arrowBackIcon'/>Go Back To Product
+               </Button>
              </Link>
     </div>
     </div>

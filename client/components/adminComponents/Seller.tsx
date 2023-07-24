@@ -101,10 +101,10 @@ console.error('Error deleting seller:',error)
         </Card>
       ))}
     </div>
-    <div>
+    <div >
     <Link href="/admin/adminDashbord">
    
-               <Button variant="contained" color="primary">
+               <Button variant="contained" className='buttonArrowBack'>
                <ArrowBackIosIcon className='arrowBackIcon'/>go back to dashboard</Button>
              </Link>
     </div>

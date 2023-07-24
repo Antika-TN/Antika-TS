@@ -139,7 +139,10 @@ h1.titl {
 }
 .listitem{
   position: relative;
-  left: 37%;
+  left: 5%;
+  color:#ffffffe6;
+  font-style:italic;
+ 
 }
 
 .cardimage{
@@ -173,11 +176,14 @@ h1.titl {
   color: #ffffff69
 }
 .arrowBackIcon{
-  height: 200px;
-  width: 200px;
-  border-radius: 6px;
-  left: 5%;
-  margin: 3%;
-  position: relative;
-  top: 0%;
+  height: 44px;
+    width: 44px;
+    border-radius: 253px;
+    left: 5%;
+    margin: 1%;
+    position: relative;
+    top: 0%;
+}
+.buttonArrowBack{
+  background-color: #8651513d;
 }

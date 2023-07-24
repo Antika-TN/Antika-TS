@@ -109,10 +109,10 @@ function Vintage() {
         </Card>
       ))}
     </div>
-    <div>
-    <Link href="/admin/adminAllProduct">
+    <div >
+    <Link href="/admin/adminAllProduct" >
     
-               <Button variant="contained" color="primary">
+               <Button variant="contained" className='buttonArrowBack' >
                <ArrowBackIosIcon className='arrowBackIcon'/>Go Back To Product</Button>
              </Link>
     </div>

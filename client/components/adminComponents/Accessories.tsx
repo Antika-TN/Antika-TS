@@ -111,10 +111,11 @@ function Accessories() {
         </Card>
       ))}
     </div>
-    <div>
-    <Link href="/admin/adminAllProduct">
-    <ArrowBackIosIcon className='arrowBackIcon'/>
-               <Button variant="contained" color="primary">Go Back To Product</Button>
+    <div >
+    <Link href="/admin/adminAllProduct" className='buttonArrowBack'>
+    
+               <Button variant="contained">
+               <ArrowBackIosIcon className='arrowBackIcon'/>Go Back To Product</Button>
              </Link>
     </div>
     </div>

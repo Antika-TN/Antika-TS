@@ -119,9 +119,9 @@ function Product() {
     </div>
     <div>
            
-       <Link href="/admin/adminDashbord">
+       <Link href="/admin/adminDashbord" >
         
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained"  className='buttonArrowBack'>
                   <ArrowBackIosIcon className='arrowBackIcon'/>go back to dashboard</Button>
                 </Link>
       </div>
