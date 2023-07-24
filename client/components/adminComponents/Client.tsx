@@ -72,11 +72,7 @@ console.error('Error deleting seller:',error);
 
   return (
     <div>
-   <div>
-   <Link href="/admin/adminDashbord">
-              <Button variant="contained" color="primary">go back to dashboard</Button>
-            </Link>
-   </div>
+   
 
    <div id='wrapper'>
       {clientsname.map((client) => (
@@ -89,7 +85,7 @@ console.error('Error deleting seller:',error);
               {`LastName: ${client.lastName}`}
             </Typography>
             {client.imageProfile && (
-              <Image width="250" height="150" src={client.imageProfile} alt={`Product Image - ${client.imageProfile}`} />
+              <Image className='cardimage' width="250" height="150" src={client.imageProfile} alt={`Product Image - ${client.imageProfile}`} />
             )}
             <Typography variant="subtitle2">
               {`Address: ${client.address}`}
@@ -104,6 +100,11 @@ console.error('Error deleting seller:',error);
         </Card>
       ))}
     </div>
+    <div>
+   <Link href="/admin/adminDashbord">
+              <Button variant="contained" color="primary">go back to dashboard</Button>
+            </Link>
+   </div>
     </div>
   )
 }

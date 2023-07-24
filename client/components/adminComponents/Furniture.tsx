@@ -88,7 +88,7 @@ function Furniture() {
               {`Category: ${furniture.Category}`}
             </Typography>
             {furniture.image && (
-              <Image width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
+              <Image className='cardimage' width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
               {`Description: ${furniture.description}`}

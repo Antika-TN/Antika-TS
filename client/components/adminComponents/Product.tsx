@@ -84,7 +84,7 @@ function Product() {
 
     <div id='wrapper'>
       {productsname.map((product) => (
-        <Card key={product.id} className='card'>
+        <Card key={product.id} className='product'>
           <CardContent>
             <Typography variant="h5" component="div">
               {`Product: ${product.name}`}
@@ -93,7 +93,7 @@ function Product() {
               {`Category: ${product.Category}`}
             </Typography>
             {product.image && (
-              <Image width="250" height="150" src={product.image} alt={`Product Image - ${product.name}`} />
+              <Image className='cardimage' width="250" height="150" src={product.image} alt={`Product Image - ${product.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
               {`Description: ${product.description}`}

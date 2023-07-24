@@ -6,7 +6,7 @@
 }
 .card{
     width: 262px;
-    height: 327px;
+    height: 351px;
     background: white;
     margin: 26px; 
     position: relative;
@@ -119,4 +119,48 @@ h1.titl {
 }
 .alll{
   margin-bottom: 190px;
+}
+.list{
+  height: 67px;
+  width: 386px;
+  background-color: #ffffff0a;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+  position: relative;
+  left: 32%;
+  margin: 60px;
+}
+
+.list:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+.listitem{
+  position: relative;
+  left: 37%;
+}
+
+.cardimage{
+  height: 200px;
+  width: 200px;
+  border-radius: 6px;
+  left: 5%;
+  margin: 3%;
+  position: relative;
+}
+.product{
+  width: 262px;
+  height: 393px;
+  background: white;
+  margin: 26px; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+  background-color: #ffffff0a;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
