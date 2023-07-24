@@ -79,13 +79,8 @@ function Product() {
 
   return (
     <div>
-    <div>
-           <Category/>
-           
-       <Link href="/admin/adminDashbord">
-                  <Button variant="contained" color="primary">go back to dashboard</Button>
-                </Link>
-      </div>
+      <Category/>
+    
 
     <div id='wrapper'>
       {productsname.map((product) => (
@@ -118,6 +113,12 @@ function Product() {
         </Card>
       ))}
     </div>
+    <div>
+           
+       <Link href="/admin/adminDashbord">
+                  <Button variant="contained" color="primary">go back to dashboard</Button>
+                </Link>
+      </div>
     </div>
 
    

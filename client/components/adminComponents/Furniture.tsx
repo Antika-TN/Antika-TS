@@ -76,11 +76,7 @@ function Furniture() {
 
   return (
     <div>
-       <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product</Button>
-             </Link>
-    </div>
+       
     <div id='wrapper'>
       {FurnitureProduct.map((furniture) => (
         <Card key={furniture.id} className='card'>
@@ -111,6 +107,11 @@ function Furniture() {
           </CardActions>
         </Card>
       ))}
+    </div>
+    <div>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
+             </Link>
     </div>
     </div>
   )

@@ -15,6 +15,9 @@
     box-shadow: 0;
     transform: scale(0.95);
     transition: box-shadow 0.5s, transform 0.5s;
+    background-color: #ffffff0a;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card:hover {
@@ -35,3 +38,85 @@
     position: absolute;
     left: 1410%;
   }
+  .profileimage{
+    border-radius: 100px;
+    flex-shrink: 0;
+    position: absolute;
+    left: 68px;
+    margin-top: -13px;
+  }
+  #table-white{
+    color: #FFF;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 18px;
+font-style:normal;
+font-weight: 700;
+line-height: normal;
+text-align: center;
+  }
+  #table-red{
+    color: #F22;
+font-family: SF Pro Display;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-align: center;
+  }
+  #table-green{
+    color: #0ACF41;
+font-family: SF Pro Display;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-align: center;
+  }
+#tablecell{
+    color: #FFF;
+text-align: center;
+font-family: SF Pro Display;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+  
+  }
+.table{
+ 
+  height: 197px;
+  table-layout: auto;
+  width: 1465px;
+  
+}
+
+h1.titl {
+  font-family: SF Pro Display;
+  font-size: 63px;
+  line-height: 4px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 0%;
+}
+.cards{
+  margin-bottom: 69px;
+  margin-top: 109px;
+  padding-left: 170px;
+  padding-right: 170px;
+}
+.underTitle{
+  font-family: SF Pro Display;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 153px;
+
+}
+.alll{
+  margin-bottom: 190px;
+}

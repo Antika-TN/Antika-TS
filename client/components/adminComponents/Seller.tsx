@@ -72,11 +72,7 @@ console.error('Error deleting seller:',error)
 
   return (
 <div>
-    <div>
-    <Link href="/admin/adminDashbord">
-               <Button variant="contained" color="primary">go back to dashboard</Button>
-             </Link>
-    </div>
+   
 
     <div id='wrapper'>
       {sellersname.map((seller) => (
@@ -103,6 +99,11 @@ console.error('Error deleting seller:',error)
           </CardActions>
         </Card>
       ))}
+    </div>
+    <div>
+    <Link href="/admin/adminDashbord">
+               <Button variant="contained" color="primary">go back to dashboard</Button>
+             </Link>
     </div>
     </div>
   )
