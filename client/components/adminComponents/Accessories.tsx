@@ -76,11 +76,7 @@ function Accessories() {
 
   return (
     <div>
-         <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product</Button>
-             </Link>
-    </div>
+      
     <div id='wrapper'>
       {AccessoriesProduct.map((accessories) => (
         <Card key={accessories.id} className='card'>
@@ -92,7 +88,7 @@ function Accessories() {
               {`Category: ${accessories.Category}`}
             </Typography>
             {accessories.image && (
-              <Image width="250" height="150" src={accessories.image} alt={`Product Image - ${accessories.name}`} />
+              <Image className='cardimage' width="250" height="150" src={accessories.image} alt={`Product Image - ${accessories.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
               {`Description: ${accessories.description}`}
@@ -111,6 +107,11 @@ function Accessories() {
           </CardActions>
         </Card>
       ))}
+    </div>
+    <div>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
+             </Link>
     </div>
     </div>
   )

@@ -3,14 +3,16 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios';
+import Image from 'next/image';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
-
+import './style.css'
 
 interface Seller {
     id: number;
     firstName: string;   
     lastName: string;  
     orderCount?: number;
+    imageProfile:string;
   }
 
   interface OrderResponse {
@@ -59,17 +61,17 @@ function DashboardTable() {
 
   return (
     <TableContainer component={Paper}    sx={{ background: 'linear-gradient(90deg, #984D38, #181E41 60%)'}}>
-    <Table>
+    <Table className='table'>
    
       <TableHead>
-        <TableRow >
-          <TableCell id='table-white'>Company Name</TableCell>
-          <TableCell id='table-white'>Volume</TableCell>
-          <TableCell id='table-white'>24H%</TableCell>
-          <TableCell id='table-white'>7D%</TableCell>
-          <TableCell id='table-white'>Floor Price</TableCell>
-          <TableCell id='table-white'>Order Count</TableCell>
-          <TableCell id='table-white'>Items</TableCell>
+        <TableRow>
+          <TableCell id='tablecell'>Company Name</TableCell>
+          <TableCell id='tablecell'>Volume</TableCell>
+          <TableCell id='tablecell'>24H%</TableCell>
+          <TableCell id='tablecell'>7D%</TableCell>
+          <TableCell id='tablecell'>Floor Price</TableCell>
+          <TableCell id='tablecell'>Order Count</TableCell>
+          <TableCell id='tablecell'>Items</TableCell>
         </TableRow>
       </TableHead>
 
@@ -77,12 +79,14 @@ function DashboardTable() {
       <TableBody>
       {sellersname.map((seller) => (
             <TableRow key={seller.id}>
-              <TableCell id='table-white'>{seller.firstName}</TableCell>
+              <TableCell id='table-white'>{seller.imageProfile && (
+              <Image className='profileimage' width="50" height="50" src={seller.imageProfile} alt={`Product Image - ${seller.imageProfile}`} />
+            )}  {seller.firstName}</TableCell>
               <TableCell id='table-white'>27,966,76</TableCell>
               <TableCell id='table-red'>+92,96</TableCell>
               <TableCell id="table-green">-16,38</TableCell>
               <TableCell id='table-white'>12,99</TableCell>
-              <TableCell id='table-white'>{seller.orderCount ?? 'Loading...'}</TableCell>
+              <TableCell id='table-white'>{seller.orderCount}</TableCell>
               <TableCell id='table-white'>10K</TableCell>
             </TableRow>
           ))}

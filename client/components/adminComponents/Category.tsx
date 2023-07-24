@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import { useState , useEffect } from 'react'
 import Link from 'next/link';
 import { Button } from '@mui/material';
-
+import './style.css'
 
 
 
@@ -58,10 +58,12 @@ function Category() {
 
   return (
     <div>
+      <div>
       <List
         component="nav"
         aria-label="Device settings"
         sx={{ bgcolor: 'background.paper' }}
+        className='list'
       >
         <ListItem
           
@@ -74,12 +76,15 @@ function Category() {
         >
           <ListItemText
             primary="categories"
-            secondary={categories[selectedIndex]}
+            secondary={categories[selectedIndex]} 
+            className='listitem'
           />
         </ListItem>
       </List>
+      </div>
+      <div className="lock-menu">
       <Menu
-        id="lock-menu"
+        
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -103,6 +108,7 @@ function Category() {
           </MenuItem>
         ))}
       </Menu>
+    </div>
     </div>
   )
 }

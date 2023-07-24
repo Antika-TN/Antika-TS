@@ -75,11 +75,7 @@ function Decor() {
 
   return (
     <div>
-         <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product</Button>
-             </Link>
-    </div>
+        
 
     <div id='wrapper'>
       {DecorProduct.map((decor) => (
@@ -92,7 +88,7 @@ function Decor() {
               {`Category: ${decor.Category}`}
             </Typography>
             {decor.image && (
-              <Image width="250" height="150" src={decor.image} alt={`Product Image - ${decor.name}`} />
+              <Image className='cardimage' width="250" height="150" src={decor.image} alt={`Product Image - ${decor.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
               {`Description: ${decor.description}`}
@@ -112,7 +108,11 @@ function Decor() {
         </Card>
       ))}
     </div>
-
+    <div>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
+             </Link>
+    </div>
   </div>
   )
 }
