@@ -79,34 +79,32 @@ function Product() {
 
   return (
     <div>
-    <div>
-           <Category/>
-           
-       <Link href="/admin/adminDashbord">
-                  <Button variant="contained" color="primary">go back to dashboard</Button>
-                </Link>
-      </div>
+      <Category/>
+    
 
     <div id='wrapper'>
       {productsname.map((product) => (
-        <Card key={product.id} className='card'>
+        <Card key={product.id} className='product'>
           <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography variant="h5" component="div" className='white'>
               {`Product: ${product.name}`}
             </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
+            <Typography variant="subtitle1" color="textSecondary" className='white'>
               {`Category: ${product.Category}`}
             </Typography>
             {product.image && (
-              <Image width="250" height="150" src={product.image} alt={`Product Image - ${product.name}`} />
+              <Image className='cardimage' width="250" height="150" src={product.image} alt={`Product Image - ${product.name}`} />
             )}
-            <Typography variant="subtitle2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary" className='white'>
+              {`Seller: ${product.User.firstName}`}
+            </Typography>
+            <Typography variant="subtitle2" color="textSecondary" className='white'>
               {`Description: ${product.description}`}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary" className='white'>
               {`Price: ${product.price}`}
             </Typography>
-            <Typography variant="subtitle2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary" className='white'>
               {`Stock: ${product.stock}`}
             </Typography>
           </CardContent>
@@ -118,6 +116,12 @@ function Product() {
         </Card>
       ))}
     </div>
+    <div>
+           
+       <Link href="/admin/adminDashbord">
+                  <Button variant="contained" color="primary">go back to dashboard</Button>
+                </Link>
+      </div>
     </div>
 
    

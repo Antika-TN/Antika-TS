@@ -76,11 +76,7 @@ function Furniture() {
 
   return (
     <div>
-       <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product</Button>
-             </Link>
-    </div>
+       
     <div id='wrapper'>
       {FurnitureProduct.map((furniture) => (
         <Card key={furniture.id} className='card'>
@@ -92,7 +88,7 @@ function Furniture() {
               {`Category: ${furniture.Category}`}
             </Typography>
             {furniture.image && (
-              <Image width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
+              <Image className='cardimage' width="250" height="150" src={furniture.image} alt={`Product Image - ${furniture.name}`} />
             )}
             <Typography variant="subtitle2" color="textSecondary">
               {`Description: ${furniture.description}`}
@@ -111,6 +107,11 @@ function Furniture() {
           </CardActions>
         </Card>
       ))}
+    </div>
+    <div>
+    <Link href="/admin/adminAllProduct">
+               <Button variant="contained" color="primary">Go Back To Product</Button>
+             </Link>
     </div>
     </div>
   )
