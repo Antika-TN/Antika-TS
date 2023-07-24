@@ -1,7 +1,8 @@
 const user = require ('../model/User.js')
 const Products= require('../model/Product.js')
 const order = require('../model/Order.js')
-const { Sequelize } = require('sequelize'); 
+const reviews = require('../model/Review.js')
+
 
 const AdminControler ={
 
@@ -140,37 +141,6 @@ const AdminControler ={
             res.status(500).json({error:'internal server error'})
         }
       },
-
-    //   async updateProductCategory (req,res){
-    //     try{
-    //         await Products.update(
-    //             {
-    //                 Category : req.body.Category
-    //             },
-    //             {
-    //                 where:{
-    //                     id: req.params.id
-    //                 }
-    //             }
-    //         )
-    //     }catch(error){
-    //         console.log('error updating productCategory:',error)
-    //         res.status(500).json({error:'internal server error'})
-    //     }
-    //   },
-
-    //   async addCategoryValue(newValue)  {
-    //     try {
-           
-              
-    //           await Products.sequelize.query(
-    //             `ALTER TABLE products MODIFY COLUMN Category ENUM('${newValue}') `
-    //           );
-    //           console.log(`Added new value "${newValue}" to Category ENUM.`);
-    //       }catch(error){
-    //     console.error("error adding value:",error )
-    // }
-    //     },
     
       async getCategoryProduct(req,res){
         try{
@@ -269,21 +239,37 @@ const AdminControler ={
         }
     },
 
-    // async productminPrice(req,res){
-    //     try{
-    //         const minprice = await Products.findAll({
-    //             attributes: [[sequelize.fn('min', sequelize.col('price')), 'minPrice']],
-
-    //             where:{
-    //                 UserId:req.params.id
-    //             }
-    //         })
-    //         res.status(200).json({message:'minPrice retrieved successfully',minprice})
-    //     } catch (error){
-    //         console.log('error retrieving minPrice:',error)
-    //         res.status(500).json({error:'Internal server error'})
-    //     }
-    // },
+    async sellerproducts(req,res){
+        try{
+            const products = await Products.count({
+                where:{
+                    UserId:req.params.id
+                }
+            })
+            
+            res.status(200).json({message:' products retrieved successfully',products})
+           
+        } catch (error){
+            console.log('error retrieving  products:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
+   
+    async sellerReviews(req,res){
+        try{
+            const review = await reviews.count({
+                where:{
+                    UserId:req.params.id
+                }
+            })
+            
+            res.status(200).json({message:' reviews retrieved successfully',review})
+           
+        } catch (error){
+            console.log('error retrieving  reviews:',error)
+            res.status(500).json({error:'Internal server error'})
+        }
+    },
 
 }
 

@@ -13,11 +13,23 @@ interface Seller {
     lastName: string;  
     orderCount?: number;
     imageProfile:string;
+    ProductCount?:number
+    ReviewCount?:number
   }
 
   interface OrderResponse {
     message: string;
     orders: number;
+  }
+
+  interface ProductResponse{
+    message: string;
+    products: number;
+  }
+
+  interface ReviewResponse{
+    message: string;
+    review: number;
   }
 
 function DashboardTable() {
@@ -37,6 +49,15 @@ function DashboardTable() {
           data.sellers.forEach((seller: Seller) => {
             fetchOrdersData(seller.id)
           });
+
+          data.sellers.forEach((seller: Seller) => {
+            fetchProductsCount(seller.id)
+          });
+
+          data.sellers.forEach((seller: Seller) => {
+            fetchReviewCount(seller.id)
+          });
+
         } catch (error) {
           console.error('Error fetching data:', error);
         }
@@ -57,6 +78,38 @@ function DashboardTable() {
           console.error('Error fetching data:', error);
         }
       }
+
+      async function fetchProductsCount(id:number) {
+        try {
+          const response = await axios.get<ProductResponse>(`http://localhost:3000/admin/sellerproducts/${id}`); 
+          const data = response.data;
+          
+
+          setSellersname((prevSellers) =>
+          prevSellers.map((seller) =>
+            seller.id === id ? { ...seller, ProductCount: data.products } : seller
+          )
+        );
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+
+      async function fetchReviewCount(id:number) {
+        try {
+          const response = await axios.get<ReviewResponse>(`http://localhost:3000/admin/sellerReviews/${id}`); 
+          const data = response.data;
+          
+
+          setSellersname((prevSellers) =>
+          prevSellers.map((seller) =>
+            seller.id === id ? { ...seller, ReviewCount: data.review } : seller
+          )
+        );
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
     
 
   return (
@@ -66,10 +119,10 @@ function DashboardTable() {
       <TableHead>
         <TableRow>
           <TableCell id='tablecell'>Company Name</TableCell>
-          <TableCell id='tablecell'>Volume</TableCell>
+          <TableCell id='tablecell'>Product Count</TableCell>
           <TableCell id='tablecell'>24H%</TableCell>
           <TableCell id='tablecell'>7D%</TableCell>
-          <TableCell id='tablecell'>Floor Price</TableCell>
+          <TableCell id='tablecell'>Review Count</TableCell>
           <TableCell id='tablecell'>Order Count</TableCell>
           <TableCell id='tablecell'>Items</TableCell>
         </TableRow>
@@ -82,10 +135,10 @@ function DashboardTable() {
               <TableCell id='table-white'>{seller.imageProfile && (
               <Image className='profileimage' width="50" height="50" src={seller.imageProfile} alt={`Product Image - ${seller.imageProfile}`} />
             )}  {seller.firstName}</TableCell>
-              <TableCell id='table-white'>27,966,76</TableCell>
+              <TableCell id='table-white'>{seller.ProductCount}</TableCell>
               <TableCell id='table-red'>+92,96</TableCell>
               <TableCell id="table-green">-16,38</TableCell>
-              <TableCell id='table-white'>12,99</TableCell>
+              <TableCell id='table-white'>{seller.ReviewCount}</TableCell>
               <TableCell id='table-white'>{seller.orderCount}</TableCell>
               <TableCell id='table-white'>10K</TableCell>
             </TableRow>

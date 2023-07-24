@@ -14,6 +14,8 @@ router.get("/getAccessoriesProduct",AdminControler.getAccessoriesProduct);
 router.get("/getVintageProduct",AdminControler.getVintageProduct);
 router.get("/sellerOrders/:id",AdminControler.sellerOrders);
 router.get("/getCategoryProduct",AdminControler.getCategoryProduct);
+router.get("/sellerproducts/:id",AdminControler.sellerproducts)
+router.get("/sellerReviews/:id",AdminControler.sellerReviews)
 
 // router.get("/productminPrice/:id",AdminControler.productminPrice);
 
