@@ -28,6 +28,14 @@ function page() {
     const [clients,setClients]= useState([])
     const [refresh,setRefresh]= useState(false)
     const [toggle, setToggle] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [address, setAddress] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const [imageCover, setImageCover] = useState('')
+    const [imageProfile, setImageProfile] = useState('')
 
     useEffect(() => {
       axios
@@ -39,6 +47,39 @@ function page() {
         console.error(error);
       })
     }, [refresh])
+
+    const editClient = function(email,password,firstName,lastName,address,phoneNumber,imageCover,imageProfile,id){
+      axios
+      .put(`http://localhost:3000/clients/${id}`,{
+        email:email,
+        password:password,
+        firstName:firstName,
+        lastName:lastName,
+        address:address,
+        phoneNumber:phoneNumber,
+        imageCover:imageCover,
+        imageProfile:imageProfile
+      })
+      .then((response)=>{
+        console.log(response.data)
+        setRefresh(!refresh)
+      })
+      .catch((error)=>{
+        console.error(error);
+      })
+    }
+  
+    const deleteClient = function(id){
+      axios
+      .delete(`http://localhost:3000/clients/${id}`)
+      .then((response)=>{
+        console.log(response.data)
+        setRefresh(!refresh)
+      })
+      .catch((error)=>{
+        console.error(error);
+      })
+    }
     
       const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -62,12 +103,16 @@ function page() {
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
+        
+
+          
+
           <List>
-            {['My Profile'].map((text, index) => (
+            {[ 'My Cart'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    {index % 1 === 0 ?  <PermIdentityIcon /> : <PermIdentityIcon />}
+                    {index % 1 === 0 ? <CartIcon /> : <CartIcon />}
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
@@ -78,34 +123,6 @@ function page() {
           <Divider />
 
           
-
-          <List>
-            {[ 'My Cart', 'My Favorite'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <CartIcon /> : <FavoriteBorderIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-
-          <Divider />
-
-          <List>
-            {[ 'Manage Account', 'Deactivate Account'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <EditIcon /> : <DeleteOutlineIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
         </Box>
 
        
@@ -147,12 +164,22 @@ function page() {
             </div>
             </div>
 
-            <button className='editing'>Edit Profile</button>
-            <div className='profile-edit'>
-          
-          </div>
+            <button className='editing' onClick={() => setToggle(!toggle)}>Edit Profile</button>
             
-         
+            {toggle && (
+            <div className='profile-edit'>
+          <input className='input' placeholder='E-mail' onChange={(e)=>(setEmail(e.target.value))}/>
+          <input className='input' placeholder='Password' onChange={(e)=>(setPassword(e.target.value))}/>
+          <input className='input' placeholder='First Name'onChange={(e)=>(setFirstName(e.target.value))}/>
+          <input className='input' placeholder='Last Name' onChange={(e)=>(setLastName(e.target.value))}/>
+          <input className='input' placeholder='Address' onChange={(e)=>(setAddress(e.target.value))}/>
+          <input className='input' placeholder='Phone Number'  onChange={(e)=>(setPhoneNumber(e.target.value))}/>
+          <input className='input' placeholder='Cover Image' onChange={(e)=>(setImageCover(e.target.value))}/>
+          <input className='input' placeholder='Profile Image' onChange={(e)=>(setImageProfile(e.target.value))}/>
+          <button className='edditing' onClick={()=>{editClient(email,password,firstName,lastName,address,phoneNumber,imageCover,imageProfile,client.id)}} >Edit</button>
+          </div>
+            )}
+         <button className='delete' onClick={deleteClient(client.id)}>Delete</button>
             </div>
             ))}
                    
