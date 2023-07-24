@@ -26,10 +26,6 @@ const Product = sequelize.define('Product', {
 
   Category:{
     type:DataTypes.ENUM (['Furniture','Decor','Accessories','Vintage ','Tools'])
-  },
-  status :{
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
   }
 });
 
