@@ -8,6 +8,7 @@ import { useState , useEffect } from 'react'
 import Link from 'next/link';
 import { Button } from '@mui/material';
 import './style.css'
+import CategoryIcon from '@mui/icons-material/Category';
 
 
 
@@ -75,10 +76,12 @@ function Category() {
           onClick={handleClickListItem}
         >
           <ListItemText
+          
             primary="categories"
             secondary={categories[selectedIndex]} 
             className='listitem'
           />
+          <CategoryIcon/>
         </ListItem>
       </List>
       </div>

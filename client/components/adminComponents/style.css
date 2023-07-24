@@ -43,7 +43,7 @@
     border-radius: 100px;
     flex-shrink: 0;
     position: absolute;
-    left: 68px;
+    left: 37px;
     margin-top: -13px;
   }
   #table-white{
@@ -139,7 +139,10 @@ h1.titl {
 }
 .listitem{
   position: relative;
-  left: 37%;
+  left: 5%;
+  color:#ffffffe6;
+  font-style:italic;
+ 
 }
 
 .cardimage{
@@ -171,4 +174,16 @@ h1.titl {
 }
 .white{
   color: #ffffff69
+}
+.arrowBackIcon{
+  height: 44px;
+    width: 44px;
+    border-radius: 253px;
+    left: 5%;
+    margin: 1%;
+    position: relative;
+    top: 0%;
+}
+.buttonArrowBack{
+  background-color: #8651513d;
 }

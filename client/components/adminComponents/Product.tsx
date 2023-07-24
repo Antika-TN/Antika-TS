@@ -12,6 +12,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import './style.css'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 interface product {
@@ -118,8 +119,10 @@ function Product() {
     </div>
     <div>
            
-       <Link href="/admin/adminDashbord">
-                  <Button variant="contained" color="primary">go back to dashboard</Button>
+       <Link href="/admin/adminDashbord" >
+        
+                  <Button variant="contained"  className='buttonArrowBack'>
+                  <ArrowBackIosIcon className='arrowBackIcon'/>go back to dashboard</Button>
                 </Link>
       </div>
     </div>

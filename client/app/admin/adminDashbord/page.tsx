@@ -17,7 +17,7 @@ const page = () => {
     
     </div>
     <h1 className='titl'>Top Market Statistics</h1>
-    <h2 className='underTitle'>The NFTs on_____ ,ranked by volume,floor price and other statistics</h2>
+    <h2 className='underTitle'>The NFTs on_____ ,ranked by Product Count,review count and other statistics</h2>
     <div>
      
       <DashboardTable />

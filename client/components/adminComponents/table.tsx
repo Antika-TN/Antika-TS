@@ -124,7 +124,6 @@ function DashboardTable() {
           <TableCell id='tablecell'>7D%</TableCell>
           <TableCell id='tablecell'>Review Count</TableCell>
           <TableCell id='tablecell'>Order Count</TableCell>
-          <TableCell id='tablecell'>Items</TableCell>
         </TableRow>
       </TableHead>
 
@@ -134,13 +133,12 @@ function DashboardTable() {
             <TableRow key={seller.id}>
               <TableCell id='table-white'>{seller.imageProfile && (
               <Image className='profileimage' width="50" height="50" src={seller.imageProfile} alt={`Product Image - ${seller.imageProfile}`} />
-            )}  {seller.firstName}</TableCell>
+            )}  {seller.firstName}  {seller.lastName}</TableCell>
               <TableCell id='table-white'>{seller.ProductCount}</TableCell>
               <TableCell id='table-red'>+92,96</TableCell>
               <TableCell id="table-green">-16,38</TableCell>
               <TableCell id='table-white'>{seller.ReviewCount}</TableCell>
               <TableCell id='table-white'>{seller.orderCount}</TableCell>
-              <TableCell id='table-white'>10K</TableCell>
             </TableRow>
           ))}
       </TableBody>

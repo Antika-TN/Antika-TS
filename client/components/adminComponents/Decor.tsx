@@ -10,6 +10,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import './style.css'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 interface decor {
     id: number
@@ -108,9 +109,11 @@ function Decor() {
         </Card>
       ))}
     </div>
-    <div>
-    <Link href="/admin/adminAllProduct">
-               <Button variant="contained" color="primary">Go Back To Product</Button>
+    <div >
+    <Link href="/admin/adminAllProduct" >
+   
+               <Button variant="contained" className='buttonArrowBack'>
+               <ArrowBackIosIcon className='arrowBackIcon'/>Go Back To Product</Button>
              </Link>
     </div>
   </div>
