@@ -34,7 +34,7 @@ function ProdactDetails() {
       <CardMedia
         component="img"
         alt="image of prodact"
-        height="340"
+        height="290"
         image={onProdact?.image}
       />
       <CardContent>
@@ -42,7 +42,9 @@ function ProdactDetails() {
        {onProdact?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {onProdact?.description}
+          {onProdact?.description}<br/> this is the description about the project for many for,fklqfl jgkjgkfnvkj krfgklv rjngklerv jlernlkgjreklngr
+          Price: {onProdact?.price} Dinar<br/>
+          Stock: {onProdact?.stock}
         </Typography>
       </CardContent>
     </Card>
@@ -58,7 +60,7 @@ function ProdactDetails() {
   </Box>
       </Box>
         <Box> <AddComment closeClick={closeClick} show={show} idProdact={idProdact} /> </Box>
-  <Box sx={{  gridColumn: "3/6 " ,marginLeft:'-100px'}}>
+  <Box sx={{  gridColumn: "3/6 " ,marginLeft:'-10px'}}>
     <Comments/>
   </Box>
 </Box>
