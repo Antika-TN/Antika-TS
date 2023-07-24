@@ -52,3 +52,6 @@ interface Comments
   interface ContextInter{
     love:number
   }
+  interface MyToken {
+    id: number;
+  }

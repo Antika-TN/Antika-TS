@@ -42,7 +42,7 @@ function ProdactDetails() {
        {onProdact?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {onProdact?.description}<br/> this is the description about the project for many for,fklqfl jgkjgkfnvkj krfgklv rjngklerv jlernlkgjreklngr
+          {onProdact?.description}<br/> 
           Price: {onProdact?.price} Dinar<br/>
           Stock: {onProdact?.stock}
         </Typography>
