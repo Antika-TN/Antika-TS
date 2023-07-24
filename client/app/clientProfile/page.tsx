@@ -1,6 +1,6 @@
 
 "use client"
-import React,{useState } from 'react';
+import React,{useState,useEffect } from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -16,15 +16,29 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { right } from '@popperjs/core';
+import axios from 'axios'
+
+
 
 type Anchor =  'settings' ;
 
 
 function page() {
-    const [state, setState] = useState({
-   
-      settings: false
-        });
+    const [state, setState] = useState({settings: false});
+    const [clients,setClients]= useState([])
+    const [refresh,setRefresh]= useState(false)
+    const [toggle, setToggle] = useState(false)
+
+    useEffect(() => {
+      axios
+      .get("http://localhost:3000/clients/")
+      .then((response)=>{
+        setClients(response.data)
+      })
+      .catch((error)=>{
+        console.error(error);
+      })
+    }, [refresh])
     
       const toggleDrawer =
         (anchor: Anchor, open: boolean) =>
@@ -92,55 +106,59 @@ function page() {
               </ListItem>
             ))}
           </List>
-
-          
-
         </Box>
+
+       
+
       );
     
       return (
         <section className='client'>
            <div className='layout'>
-            <div className='profile'>
+            { clients.map((client,index)=>(
+            <div className='profile' key={index}>
 
               <div className="cover-image">
-              <img src='https://img.freepik.com/premium-vector/set-creative-hand-painted-contour-abstract-female-silhouettes-minimalist-vector-people-icon-postcard-poster-brochure-cover-design-web-interior-painting_320582-89.jpg?w=2000' />
+              <img src= {client.imageCover}/>
             </div>
 
               <div className='profile-img'>
-            <img  src='https://cdn-icons-png.flaticon.com/512/6833/6833605.png'/>
+            <img  src={client.imageProfile}/>
             </div>
 
             <div className='fullname'>
-               <p>Maya Smith</p>
+               <p>{client.firstName +" "+client.lastName}</p>
             </div>
 
             <div className='created'>
-              <h1>Creation: 2023-07-21 </h1>
+              <h1>Creation: {client.createdAt} </h1>
             </div>
 
             <div className='info' >
             <span className='info-title' >Address :</span>
-            <span className='info-profile' > L.A </span>
+            <span className='info-profile' > {client.address} </span>
             <div>
             <span className='info-title' >Phone Number :</span>
-            <span className='info-profile'> +444 5555 666 88</span>
+            <span className='info-profile'> {client.phoneNumber}</span>
             </div>
             <div className='email'>
-            <span className='info-email' >E-mail :</span>
-            <span className='infoemail' > mayasmith@gmail.com</span>
+            <span className='info-email' >E-mail: </span>
+            <span className='infoemail' >{client.email}</span>
             </div>
             </div>
 
-            
-
+            <button className='editing'>Edit Profile</button>
+            <div className='profile-edit'>
+          
+          </div>
             
          
             </div>
+            ))}
+                   
 
 
-
-
+                   
         <div className='sidebar'>
 
             {/* <h1>Settings On the </h1> */}
@@ -160,6 +178,11 @@ function page() {
           ))}
 
         </div>
+
+
+
+
+       
 
         </div>
         </section>
