@@ -77,7 +77,7 @@ const Index: React.FC = () => {
 
   const [sellerData, setSellerData] = useState<any[]>([]);
   const [sellerp, setSellerp] = useState<any[]>([]);
-  const userID = 1;
+  const userID = 3;
 
   const handleDeleteProduct = async (productId) => {
     try {
