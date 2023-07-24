@@ -30,6 +30,7 @@ const createClient = function(req,res){
         phoneNumber: req.body.phoneNumber,
         imageCover:req.body.image,
         imageProfile:req.body.image,
+        role:req.body.role,
         createdAt:req.body.createdAt,
         updatedAt:req.body.updatedAt
       })
@@ -52,8 +53,7 @@ const updateClient = function(req,res){
     phoneNumber: req.body.phoneNumber,
     imageCover:req.body.image,
     imageProfile:req.body.image,
-    createdAt:req.body.createdAt,
-    updatedAt:req.body.updatedAt
+    
   },
   {where: { id: req.params.id } })
   .then((results) => {
