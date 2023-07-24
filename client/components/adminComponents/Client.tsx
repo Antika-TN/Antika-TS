@@ -78,16 +78,16 @@ console.error('Error deleting seller:',error);
       {clientsname.map((client) => (
         <Card key={client.id} className='card'>
           <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography variant="h5" component="div" className='white'>
               {`FirstName: ${client.firstName}`}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" className='white'>
               {`LastName: ${client.lastName}`}
             </Typography>
             {client.imageProfile && (
               <Image className='cardimage' width="250" height="150" src={client.imageProfile} alt={`Product Image - ${client.imageProfile}`} />
             )}
-            <Typography variant="subtitle2">
+            <Typography variant="subtitle2" className='white'>
               {`Address: ${client.address}`}
             </Typography>
             
